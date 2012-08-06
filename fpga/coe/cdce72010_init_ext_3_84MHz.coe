@@ -1,0 +1,76 @@
+;******************************************************************
+;** CECE72010 Initialization                                     **
+;******************************************************************
+;** The register settings allows the clock signals derived from  **
+;** an external 3.84MHz signal                                 **
+;******************************************************************
+;
+; Paramaters
+; delta_f = 40MHz
+; fc = 460.8MHz
+; fs = 122.88MHz
+; NZ = 8
+; h = 120
+; frev = 3.84MHz
+; fadc = fs = frev * 32 (possible solution from System 1 below)
+;
+; Formulas
+;
+; fs > 2*delta_f
+; fs = 4*fc / 2*NZ-1
+;
+; System 1:
+; frev*Y = fs
+; fc/X = frev
+;
+;******************************************************************
+;
+; This .COE file specifies initialization values for a block
+; memory of depth=16, and width=32.
+; Values are specified in hexadecimal format:
+; 28 MSB = data, 4 LSB = address.
+;
+; Loading from ROM stops when address 0xC has been processed.
+; therefore this register must be the last entry in this file.
+;
+;******************************************************************
+; Bits description. All bit references are related to RAM bits (4 bit offset)
+; Reg 0: SEC_IN enabled, bits (3:2) = 10b. PRI or SEC clock is selected, bit (4) = 0b.
+;			Reference Select Control is set to internal control (accordingly to bits 2:3), bit (5) = 1b
+; Reg 2: Output divider 2 (To ADC) = 4, bits (19:13) = 4d. Output Divider is enabled, bit (20) = 1b
+; Reg 10: M = 24, bits (13:0) = 24d. N = 383, bits (27:14) = 383d
+; Reg 11: SEC_DIV2 is disabled, bit (1) = 0b.
+; 			FB divider is enabled, bit (2) = 0b.
+;			P = 8, bits (11:5) = 8d.
+;			PLL is on, bit (19) = 0b.
+;			VCXO feeds PLL and outputs and AUXIN disabled, bits (21:20) = 00b
+
+memory_initialization_radix=16;
+memory_initialization_vector=
+682C0290,
+;683C0290,    110100000101100000000101001
+;;;682C0050,  110100000101100000000000101
+68840041,
+;68000021,	  110100010000100000000000100
+;;;68840041,  110100010000100000000000100
+83840002,
+;83080002, 	  1000001110000100000000000000
+;;;83080002,  1000001100001000000000000000
+68400003,
+;68000003,	  110100001000000000000000000
+;;;68400003,  110100001000000000000000000
+E9800004,
+68000005,
+68000006,
+83800017,
+68000098,
+68000C49,
+;68050CC9,		110100000000000000011000100
+;;; 68000049,	110100000000000000000000100
+0BFC02FA,
+;0C00030A,		101111111100000000101111
+;;; 0BFC0EFA, 	101111111100000011101111
+8000050B,
+;0000100B,		1000000000000000000001010000
+;;; 8000058B, 	1000000000000000000001011000
+0000180C;

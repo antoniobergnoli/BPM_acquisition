@@ -1,0 +1,15 @@
+
+**** Build of configuration Debug for project fmc150_acquisition_0 ****
+
+make all 
+Building file: ../src/acquisition_dma_test_3.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -D __XMK__ -I../../fmc150_acquisition_lwip_bsp_0/microblaze_0/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -MMD -MP -MF"src/acquisition_dma_test_3.d" -MT"src/acquisition_dma_test_3.d" -o"src/acquisition_dma_test_3.o" "../src/acquisition_dma_test_3.c"
+../src/acquisition_dma_test_3.c: In function 'update_adc_delay':
+../src/acquisition_dma_test_3.c:77: error: 'XPAR_FMC150_BASEADDR' undeclared (first use in this function)
+../src/acquisition_dma_test_3.c:77: error: (Each undeclared identifier is reported only once
+../src/acquisition_dma_test_3.c:77: error: for each function it appears in.)
+../src/acquisition_dma_test_3.c: In function 'adc_capture':
+../src/acquisition_dma_test_3.c:100: error: 'XPAR_FMC150_DMA_BASEADDR' undeclared (first use in this function)
+../src/acquisition_dma_test_3.c:106: error: 'XPAR_FMC150_BASEADDR' undeclared (first use in this function)
+make: *** [src/acquisition_dma_test_3.o] Error 1

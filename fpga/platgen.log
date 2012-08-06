@@ -1,0 +1,778 @@
+Release 13.4 - platgen Xilinx EDK 13.4 Build EDK_O.87xd
+ (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: platgen -p xc6vlx240tff1156-1 -lang vhdl -intstyle default -msg
+__xps/ise/xmsgprops.lst system.mhs 
+
+WARNING:EDK - INFO:Security:71 - If a license for part 'xc6vlx240t' is
+   available, it will be possible to use 'XPS_TDP' instead of 'XPS'.
+   WARNING:Security:42 - Your software subscription period has lapsed. Your
+   current version of Xilinx tools will continue to function, but you no longer
+   qualify for Xilinx software updates or new releases.
+
+
+Parse
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+system.mhs ...
+
+Read MPD definitions ...
+
+Overriding IP level properties ...
+INFO:EDK:4130 - IPNAME: axi_intc, INSTANCE:microblaze_0_intc - tcl is overriding
+   PARAMETER C_NUM_INTR_INPUTS value to 8 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_intc_v1_01_a\dat
+   a\axi_intc_v2_1_0.mpd line 80 
+INFO:EDK:4130 - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_ENDIANNESS value to 1 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\microblaze_v8_20_b\d
+   ata\microblaze_v2_1_0.mpd line 195 
+INFO:EDK:4130 - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_ICACHE_USE_FSL value to 0 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\microblaze_v8_20_b\d
+   ata\microblaze_v2_1_0.mpd line 334 
+INFO:EDK:4130 - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_DCACHE_USE_FSL value to 0 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\microblaze_v8_20_b\d
+   ata\microblaze_v2_1_0.mpd line 364 
+INFO:EDK:4130 - IPNAME: axi_interconnect, INSTANCE:axi4lite_0 - tcl is
+   overriding PARAMETER C_BASEFAMILY value to virtex6 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_interconnect_v1_
+   05_a\data\axi_interconnect_v2_1_0.mpd line 78 
+INFO:EDK:4130 - IPNAME: axi_interconnect, INSTANCE:axi4_0 - tcl is overriding
+   PARAMETER C_BASEFAMILY value to virtex6 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_interconnect_v1_
+   05_a\data\axi_interconnect_v2_1_0.mpd line 78 
+INFO:EDK:4130 - IPNAME: axi_v6_ddrx, INSTANCE:DDR3_SDRAM - tcl is overriding
+   PARAMETER C_IODELAY_GRP value to DDR3_SDRAM -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_v6_ddrx_v1_05_a\
+   data\axi_v6_ddrx_v2_1_0.mpd line 84 
+INFO:EDK:4130 - IPNAME: axi_dma, INSTANCE:XBPM_DDC_dma - tcl is overriding
+   PARAMETER C_PRMRY_IS_ACLK_ASYNC value to 1 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_dma_v5_00_a\data
+   \axi_dma_v2_1_0.mpd line 85 
+INFO:EDK:4130 - IPNAME: axi_dma, INSTANCE:XBPM_ADC_dma - tcl is overriding
+   PARAMETER C_PRMRY_IS_ACLK_ASYNC value to 1 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_dma_v5_00_a\data
+   \axi_dma_v2_1_0.mpd line 85 
+
+Computing clock values...
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   microblaze_0_i_bram_ctrl:BRAM_Clk_A. Clock DRCs will not be performed on this
+   core and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   microblaze_0_d_bram_ctrl:BRAM_Clk_A. Clock DRCs will not be performed on this
+   core and cores connected to it. 
+INFO:EDK:3716 - IPNAME: axi_dma, INSTANCE: XBPM_DDC_dma - Tools are updating the
+   value of the parameter C_INTERCONNECT_M_AXI_S2MM_IS_ACLK_ASYNC to '1'. 
+INFO:EDK:3716 - IPNAME: axi_dma, INSTANCE: XBPM_ADC_dma - Tools are updating the
+   value of the parameter C_INTERCONNECT_M_AXI_S2MM_IS_ACLK_ASYNC to '1'. 
+WARNING:EDK:4058 - INSTANCE: ETHERNET_dma, BUS_INTERFACE: M_AXI_SG -  is not
+   connected to any slave. 
+WARNING:EDK:4058 - INSTANCE: ETHERNET_dma, BUS_INTERFACE: M_AXI_MM2S -  is not
+   connected to any slave. 
+WARNING:EDK:4058 - INSTANCE: ETHERNET_dma, BUS_INTERFACE: M_AXI_S2MM -  is not
+   connected to any slave. 
+WARNING:EDK:4058 - INSTANCE: XBPM_DDC_dma, BUS_INTERFACE: M_AXI_S2MM -  is not
+   connected to any slave. 
+
+Performing IP level DRCs on properties...
+
+Running DRC Tcl procedures for OPTION IPLEVEL_DRC_PROC...
+Address Map for Processor microblaze_0
+  (0000000000-0x00001fff) microblaze_0_d_bram_ctrl	microblaze_0_dlmb
+  (0000000000-0x00001fff) microblaze_0_i_bram_ctrl	microblaze_0_ilmb
+  (0x40000000-0x4000ffff) LEDs_8Bits	axi4lite_0
+  (0x40600000-0x4060ffff) RS232_Uart_1	axi4lite_0
+  (0x41200000-0x4120ffff) microblaze_0_intc	axi4lite_0
+  (0x41240000-0x4127ffff) ETHERNET	axi4lite_0
+  (0x41400000-0x4140ffff) debug_module	axi4lite_0
+  (0x41800000-0x4180ffff) SysACE_CompactFlash	axi4lite_0
+  (0x41c00000-0x41c0ffff) axi_timer_0	axi4lite_0
+  (0x41e00000-0x41e0ffff) XBPM_DDC_dma	axi4lite_0
+  (0x41e20000-0x41e2ffff) ETHERNET_dma	axi4lite_0
+  (0x41e40000-0x41e4ffff) XBPM_ADC_dma	axi4lite_0
+  (0x71000000-0x7100ffff) fmc150_if_dma_0	axi4lite_0
+  (0x7e820000-0x7e82ffff) bpm_ddc_0	axi4lite_0
+  (0xc0000000-0xcfffffff) DDR3_SDRAM	axi4_0
+INFO:EDK:4130 - IPNAME: lmb_v10, INSTANCE:microblaze_0_ilmb - tool is overriding
+   PARAMETER C_LMB_NUM_SLAVES value to 1 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\lmb_v10_v2_00_b\data
+   \lmb_v10_v2_1_0.mpd line 80 
+INFO:EDK:4130 - IPNAME: lmb_v10, INSTANCE:microblaze_0_dlmb - tool is overriding
+   PARAMETER C_LMB_NUM_SLAVES value to 1 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\lmb_v10_v2_00_b\data
+   \lmb_v10_v2_1_0.mpd line 80 
+INFO:EDK:4130 - IPNAME: bram_block, INSTANCE:microblaze_0_bram_block - tool is
+   overriding PARAMETER C_MEMSIZE value to 0x2000 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\bram_block_v1_00_a\d
+   ata\bram_block_v2_1_0.mpd line 76 
+
+Checking platform address map ...
+
+Checking platform configuration ...
+IPNAME: lmb_v10, INSTANCE: microblaze_0_ilmb - 1 master(s) : 1 slave(s) 
+IPNAME: lmb_v10, INSTANCE: microblaze_0_dlmb - 1 master(s) : 1 slave(s) 
+IPNAME: axi_interconnect, INSTANCE: axi4lite_0 - 1 master(s) : 12 slave(s) 
+IPNAME: axi_interconnect, INSTANCE: axi4_0 - 7 master(s) : 1 slave(s) 
+
+Checking port drivers...
+WARNING:EDK:4181 - PORT: mm2s_prmry_reset_out_n, CONNECTOR: RESET_OUT_N -
+   floating connection -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_dma_v5_00_a\data
+   \axi_dma_v2_1_0.mpd line 210 
+WARNING:EDK:4181 - PORT: mm2s_cntrl_reset_out_n, CONNECTOR: RESET_OUT_N -
+   floating connection -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_dma_v5_00_a\data
+   \axi_dma_v2_1_0.mpd line 216 
+WARNING:EDK:4181 - PORT: s2mm_prmry_reset_out_n, CONNECTOR: RESET_OUT_N -
+   floating connection -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_dma_v5_00_a\data
+   \axi_dma_v2_1_0.mpd line 238 
+WARNING:EDK:4181 - PORT: s2mm_sts_reset_out_n, CONNECTOR: RESET_OUT_N - floating
+   connection -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_dma_v5_00_a\data
+   \axi_dma_v2_1_0.mpd line 244 
+WARNING:EDK:4181 - PORT: mm2s_prmry_reset_out_n, CONNECTOR: RESET_OUT_N -
+   floating connection -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_dma_v5_00_a\data
+   \axi_dma_v2_1_0.mpd line 210 
+WARNING:EDK:4181 - PORT: mm2s_cntrl_reset_out_n, CONNECTOR: RESET_OUT_N -
+   floating connection -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_dma_v5_00_a\data
+   \axi_dma_v2_1_0.mpd line 216 
+WARNING:EDK:4181 - PORT: s2mm_prmry_reset_out_n, CONNECTOR: RESET_OUT_N -
+   floating connection -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_dma_v5_00_a\data
+   \axi_dma_v2_1_0.mpd line 238 
+WARNING:EDK:4181 - PORT: s2mm_sts_reset_out_n, CONNECTOR: RESET_OUT_N - floating
+   connection -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_dma_v5_00_a\data
+   \axi_dma_v2_1_0.mpd line 244 
+
+Performing Clock DRCs...
+
+Performing Reset DRCs...
+
+Overriding system level properties...
+INFO:EDK:4130 - IPNAME: axi_intc, INSTANCE:microblaze_0_intc - tcl is overriding
+   PARAMETER C_KIND_OF_INTR value to 0b11111111111111111111111110000000 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_intc_v1_01_a\dat
+   a\axi_intc_v2_1_0.mpd line 81 
+INFO:EDK:4130 - IPNAME: axi_intc, INSTANCE:microblaze_0_intc - tcl is overriding
+   PARAMETER C_KIND_OF_EDGE value to 0b11111111111111111111111111111111 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_intc_v1_01_a\dat
+   a\axi_intc_v2_1_0.mpd line 82 
+INFO:EDK:4130 - IPNAME: axi_intc, INSTANCE:microblaze_0_intc - tcl is overriding
+   PARAMETER C_KIND_OF_LVL value to 0b11111111111111111111111111111111 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_intc_v1_01_a\dat
+   a\axi_intc_v2_1_0.mpd line 83 
+INFO:EDK:4130 - IPNAME: lmb_bram_if_cntlr, INSTANCE:microblaze_0_i_bram_ctrl -
+   tcl is overriding PARAMETER C_MASK value to 0x40000000 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\lmb_bram_if_cntlr_v3
+   _00_b\data\lmb_bram_if_cntlr_v2_1_0.mpd line 87 
+INFO:EDK:4130 - IPNAME: lmb_bram_if_cntlr, INSTANCE:microblaze_0_d_bram_ctrl -
+   tcl is overriding PARAMETER C_MASK value to 0x40000000 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\lmb_bram_if_cntlr_v3
+   _00_b\data\lmb_bram_if_cntlr_v2_1_0.mpd line 87 
+INFO:EDK:4130 - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_D_AXI value to 1 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\microblaze_v8_20_b\d
+   ata\microblaze_v2_1_0.mpd line 228 
+INFO:EDK:4130 - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_ADDR_TAG_BITS value to 15 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\microblaze_v8_20_b\d
+   ata\microblaze_v2_1_0.mpd line 332 
+INFO:EDK:4130 - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_DCACHE_ADDR_TAG value to 15 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\microblaze_v8_20_b\d
+   ata\microblaze_v2_1_0.mpd line 362 
+INFO:EDK:4130 - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_USE_INTERRUPT value to 1 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\microblaze_v8_20_b\d
+   ata\microblaze_v2_1_0.mpd line 396 
+INFO:EDK:4130 - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_USE_EXT_BRK value to 1 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\microblaze_v8_20_b\d
+   ata\microblaze_v2_1_0.mpd line 397 
+INFO:EDK:4130 - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_USE_EXT_NM_BRK value to 1 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\microblaze_v8_20_b\d
+   ata\microblaze_v2_1_0.mpd line 398 
+
+INFO: Setting C_RANGE_CHECK = ON for axi_interconnect axi4lite_0.
+INFO:EDK:4130 - IPNAME: axi_interconnect, INSTANCE:axi4lite_0 - tcl is
+   overriding PARAMETER C_RANGE_CHECK value to 1 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_interconnect_v1_
+   05_a\data\axi_interconnect_v2_1_0.mpd line 146 
+
+INFO: Setting C_RANGE_CHECK = OFF for axi_interconnect axi4_0; no DECERR
+checking will be performed.
+INFO:EDK:4130 - IPNAME: axi_interconnect, INSTANCE:axi4_0 - tcl is overriding
+   PARAMETER C_RANGE_CHECK value to 0 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_interconnect_v1_
+   05_a\data\axi_interconnect_v2_1_0.mpd line 146 
+INFO:EDK:4130 - IPNAME: chipscope_icon, INSTANCE:chipscope_icon_0 - tcl is
+   overriding PARAMETER C_SYSTEM_CONTAINS_MDM value to 1 -
+   C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\chipscope_icon_v1_06
+   _a\data\chipscope_icon_v2_1_0.mpd line 80 
+
+Running system level update procedures...
+
+Running UPDATE Tcl procedures for OPTION SYSLEVEL_UPDATE_PROC...
+Invoking MIG ...
+MIG returned 0
+
+Running system level DRCs...
+
+Performing System level DRCs on properties...
+
+Running DRC Tcl procedures for OPTION SYSLEVEL_DRC_PROC...
+Chipscope Integrate Controller, instance 'chipscope_icon', exists in System 
+Chipscope Integrate Controller, instance 'chipscope_icon', exists in System 
+Chipscope Integrate Controller, instance 'chipscope_icon', exists in System 
+
+Running UPDATE Tcl procedures for OPTION PLATGEN_SYSLEVEL_UPDATE_PROC...
+INFO: Setting timing constaints for microblaze_0_ilmb.
+INFO: The microblaze_0_ilmb core has constraints automatically generated by XPS
+in implementation/microblaze_0_ilmb_wrapper/microblaze_0_ilmb_wrapper.ucf.
+It can be overridden by constraints placed in the system.ucf file.
+
+INFO: Setting timing constaints for microblaze_0_dlmb.
+INFO: The microblaze_0_dlmb core has constraints automatically generated by XPS
+in implementation/microblaze_0_dlmb_wrapper/microblaze_0_dlmb_wrapper.ucf.
+It can be overridden by constraints placed in the system.ucf file.
+
+INFO: Setting timing constaints for microblaze_0.
+INFO: The microblaze_0 core has constraints automatically generated by XPS in
+implementation/microblaze_0_wrapper/microblaze_0_wrapper.ucf.
+It can be overridden by constraints placed in the system.ucf file.
+
+INFO: No synchronous clock conversions in axi_interconnect axi4lite_0.
+INFO: No asynchronous clock conversions in axi_interconnect axi4lite_0.
+INFO: Generating core-level timing constraints for synchronous clock conversions
+in axi_interconnect axi4_0.
+INFO: Generating core-level timing constraints for asynchronous clock
+conversions in axi_interconnect axi4_0.
+INFO: The SysACE_CompactFlash core has constraints automatically generated by
+XPS in
+implementation/sysace_compactflash_wrapper/sysace_compactflash_wrapper.ucf.
+It can be overridden by constraints placed in the system.ucf file.
+
+INFO: The SysACE_CompactFlash core has constraints automatically generated by
+XPS in
+implementation/sysace_compactflash_wrapper/sysace_compactflash_wrapper.ucf.
+It can be overridden by constraints placed in the system.ucf file.
+
+
+Modify defaults ...
+
+Creating stub ...
+
+Processing licensed instances ...
+Completion time: 0.00 seconds
+
+Creating hardware output directories ...
+
+Managing hardware (BBD-specified) netlist files ...
+IPNAME:bpm_ddc INSTANCE:bpm_ddc_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 248 - Copying (BBD-specified) netlist files.
+IPNAME:chipscope_icon INSTANCE:chipscope_icon_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 510 - Copying (BBD-specified) netlist files.
+IPNAME:chipscope_ila INSTANCE:chipscope_ila_1 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 519 - Copying (BBD-specified) netlist files.
+IPNAME:chipscope_ila INSTANCE:chipscope_ila_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 532 - Copying (BBD-specified) netlist files.
+IPNAME:fmc150_if_dma INSTANCE:fmc150_if_dma_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 545 - Copying (BBD-specified) netlist files.
+IPNAME:chipscope_ila INSTANCE:chipscope_ila_2 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 632 - Copying (BBD-specified) netlist files.
+
+Managing cache ...
+
+Elaborating instances ...
+IPNAME:bram_block INSTANCE:microblaze_0_bram_block -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 149 - elaborating IP
+IPNAME:clock_generator INSTANCE:clock_generator_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 197 - elaborating IP
+ClkGen elaborate status: PASSED
+----------------------------------------
+IPNAME:chipscope_icon INSTANCE:chipscope_icon_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 510 - elaborating IP
+Created elaborate directory hdl/elaborate/chipscope_icon_0_v1_06_a/synhdl/vhdl/
+Generating ChipScope core: chipscope_icon_0 ...
+ChipScope Core Generator command: coregen.exe -b
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+implementation/chipscope_icon_0.xco
+Release 13.4 - Xilinx CORE Generator O.87xd (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+All runtime messages will be recorded in
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+implementation\chipscope_icon_0_wrapper\coregen.log
+Updating project device from '6vlx240t' to 'xc6vlx240t'.
+Wrote CGP file for project 'coregen'.
+Resolving generic values...
+Finished resolving generic values.
+Generating IP...
+Configuring files for chipscope_icon_0 root...
+Gathering HDL files for chipscope_icon_0 root...
+Creating XST project for chipscope_icon_0...
+Creating XST script file for chipscope_icon_0...
+Creating XST instantiation file for chipscope_icon_0...
+Running XST for chipscope_icon_0...
+XST: HDL Parsing
+XST: HDL Elaboration
+XST: HDL Synthesis
+XST: Advanced HDL Synthesis
+XST: Low Level Synthesis
+XST: Design Summary
+Not generating VHDL wrapper
+Not generating Verilog wrapper
+Skipping VHDL instantiation template for chipscope_icon_0...
+Skipping Verilog instantiation template for chipscope_icon_0...
+Finished Generation.
+Generating IP instantiation template...
+Generating ASY schematic symbol...
+Generating metadata file...
+Generating ISE project...
+XCO file found: chipscope_icon_0.xco
+XMDF file found: chipscope_icon_0_xmdf.tcl
+Adding
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+implementation/chipscope_icon_0_wrapper/tmp/_cg/chipscope_icon_0.asy -view all
+-origin_type imported
+Adding
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+implementation/chipscope_icon_0_wrapper/tmp/_cg/chipscope_icon_0.ngc -view all
+-origin_type created
+Checking file
+"D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA
+/implementation/chipscope_icon_0_wrapper/tmp/_cg/chipscope_icon_0.ngc" for
+project device match ...
+File
+"D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA
+/implementation/chipscope_icon_0_wrapper/tmp/_cg/chipscope_icon_0.ngc" device
+information matches project device.
+INFO:TclTasksC:2116 - The automatic calculation of top has been turned-off.
+   Please set the new top explicitly by running the "project set top" command.
+   To re-calculate the new top automatically, set the "Auto Implementation Top"
+   property to true.
+Top level has been set to "/chipscope_icon_0"
+Generating README file...
+Generating FLIST file...
+Moving files to output directory...
+Finished moving files to output directory
+Saved CGP file for project 'coregen'.
+*************************************************************
+IPNAME:chipscope_ila INSTANCE:chipscope_ila_1 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 519 - elaborating IP
+Created elaborate directory hdl/elaborate/chipscope_ila_1_v1_05_a/synhdl/vhdl/
+Generating ChipScope core: chipscope_ila_1 ...
+ChipScope Core Generator command: coregen.exe -b
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+implementation/chipscope_ila_1.xco
+Release 13.4 - Xilinx CORE Generator O.87xd (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+All runtime messages will be recorded in
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+implementation\chipscope_ila_1_wrapper\coregen.log
+Updating project device from '6vlx240t' to 'xc6vlx240t'.
+Wrote CGP file for project 'coregen'.
+Resolving generic values...
+Finished resolving generic values.
+Generating IP...
+Configuring files for chipscope_ila_1 root...
+Gathering HDL files for chipscope_ila_1 root...
+Creating XST project for chipscope_ila_1...
+Creating XST script file for chipscope_ila_1...
+Creating XST instantiation file for chipscope_ila_1...
+Running XST for chipscope_ila_1...
+XST: HDL Parsing
+XST: HDL Elaboration
+XST: HDL Synthesis
+XST: Advanced HDL Synthesis
+XST: Low Level Synthesis
+XST: Design Summary
+Not generating VHDL wrapper
+Not generating Verilog wrapper
+Skipping VHDL instantiation template for chipscope_ila_1...
+Skipping Verilog instantiation template for chipscope_ila_1...
+Finished Generation.
+Generating IP instantiation template...
+Generating ASY schematic symbol...
+Generating metadata file...
+Generating ISE project...
+XCO file found: chipscope_ila_1.xco
+XMDF file found: chipscope_ila_1_xmdf.tcl
+WARNING:EDK - : chipscope_ila_1.vhd does not exist, will not be added to ISE
+   project.
+
+WARNING:EDK - : chipscope_ila_1.vho does not exist, will not be added to ISE
+   project.
+
+Adding
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+implementation/chipscope_ila_1_wrapper/tmp/_cg/chipscope_ila_1.asy -view all
+-origin_type imported
+Adding
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+implementation/chipscope_ila_1_wrapper/tmp/_cg/chipscope_ila_1.ngc -view all
+-origin_type created
+Checking file
+"D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA
+/implementation/chipscope_ila_1_wrapper/tmp/_cg/chipscope_ila_1.ngc" for project
+device match ...
+File
+"D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA
+/implementation/chipscope_ila_1_wrapper/tmp/_cg/chipscope_ila_1.ngc" device
+information matches project device.
+INFO:TclTasksC:2116 - The automatic calculation of top has been turned-off.
+   Please set the new top explicitly by running the "project set top" command.
+   To re-calculate the new top automatically, set the "Auto Implementation Top"
+   property to true.
+Top level has been set to "/chipscope_ila_1"
+Generating README file...
+Generating FLIST file...
+Moving files to output directory...
+Finished moving files to output directory
+Saved CGP file for project 'coregen'.
+*************************************************************
+IPNAME:chipscope_ila INSTANCE:chipscope_ila_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 532 - elaborating IP
+Created elaborate directory hdl/elaborate/chipscope_ila_0_v1_05_a/synhdl/vhdl/
+Generating ChipScope core: chipscope_ila_0 ...
+ChipScope Core Generator command: coregen.exe -b
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+implementation/chipscope_ila_0.xco
+Release 13.4 - Xilinx CORE Generator O.87xd (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+All runtime messages will be recorded in
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+implementation\chipscope_ila_0_wrapper\coregen.log
+Updating project device from '6vlx240t' to 'xc6vlx240t'.
+Wrote CGP file for project 'coregen'.
+Resolving generic values...
+Finished resolving generic values.
+Generating IP...
+Configuring files for chipscope_ila_0 root...
+Gathering HDL files for chipscope_ila_0 root...
+Creating XST project for chipscope_ila_0...
+Creating XST script file for chipscope_ila_0...
+Creating XST instantiation file for chipscope_ila_0...
+Running XST for chipscope_ila_0...
+XST: HDL Parsing
+XST: HDL Elaboration
+XST: HDL Synthesis
+XST: Advanced HDL Synthesis
+XST: Low Level Synthesis
+XST: Design Summary
+Not generating VHDL wrapper
+Not generating Verilog wrapper
+Skipping VHDL instantiation template for chipscope_ila_0...
+Skipping Verilog instantiation template for chipscope_ila_0...
+Finished Generation.
+Generating IP instantiation template...
+Generating ASY schematic symbol...
+Generating metadata file...
+Generating ISE project...
+XCO file found: chipscope_ila_0.xco
+XMDF file found: chipscope_ila_0_xmdf.tcl
+WARNING:EDK - : chipscope_ila_0.vhd does not exist, will not be added to ISE
+   project.
+
+WARNING:EDK - : chipscope_ila_0.vho does not exist, will not be added to ISE
+   project.
+
+Adding
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+implementation/chipscope_ila_0_wrapper/tmp/_cg/chipscope_ila_0.asy -view all
+-origin_type imported
+Adding
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+implementation/chipscope_ila_0_wrapper/tmp/_cg/chipscope_ila_0.ngc -view all
+-origin_type created
+Checking file
+"D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA
+/implementation/chipscope_ila_0_wrapper/tmp/_cg/chipscope_ila_0.ngc" for project
+device match ...
+File
+"D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA
+/implementation/chipscope_ila_0_wrapper/tmp/_cg/chipscope_ila_0.ngc" device
+information matches project device.
+INFO:TclTasksC:2116 - The automatic calculation of top has been turned-off.
+   Please set the new top explicitly by running the "project set top" command.
+   To re-calculate the new top automatically, set the "Auto Implementation Top"
+   property to true.
+Top level has been set to "/chipscope_ila_0"
+Generating README file...
+Generating FLIST file...
+Moving files to output directory...
+Finished moving files to output directory
+Saved CGP file for project 'coregen'.
+*************************************************************
+IPNAME:chipscope_ila INSTANCE:chipscope_ila_2 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 632 - elaborating IP
+Created elaborate directory hdl/elaborate/chipscope_ila_2_v1_05_a/synhdl/vhdl/
+Generating ChipScope core: chipscope_ila_2 ...
+ChipScope Core Generator command: coregen.exe -b
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+implementation/chipscope_ila_2.xco
+Release 13.4 - Xilinx CORE Generator O.87xd (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+All runtime messages will be recorded in
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+implementation\chipscope_ila_2_wrapper\coregen.log
+Updating project device from '6vlx240t' to 'xc6vlx240t'.
+Wrote CGP file for project 'coregen'.
+Resolving generic values...
+Finished resolving generic values.
+Generating IP...
+Configuring files for chipscope_ila_2 root...
+Gathering HDL files for chipscope_ila_2 root...
+Creating XST project for chipscope_ila_2...
+Creating XST script file for chipscope_ila_2...
+Creating XST instantiation file for chipscope_ila_2...
+Running XST for chipscope_ila_2...
+XST: HDL Parsing
+XST: HDL Elaboration
+XST: HDL Synthesis
+XST: Advanced HDL Synthesis
+XST: Low Level Synthesis
+XST: Design Summary
+Not generating VHDL wrapper
+Not generating Verilog wrapper
+Skipping VHDL instantiation template for chipscope_ila_2...
+Skipping Verilog instantiation template for chipscope_ila_2...
+Finished Generation.
+Generating IP instantiation template...
+Generating ASY schematic symbol...
+Generating metadata file...
+Generating ISE project...
+XCO file found: chipscope_ila_2.xco
+XMDF file found: chipscope_ila_2_xmdf.tcl
+WARNING:EDK - : chipscope_ila_2.vhd does not exist, will not be added to ISE
+   project.
+
+WARNING:EDK - : chipscope_ila_2.vho does not exist, will not be added to ISE
+   project.
+
+Adding
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+implementation/chipscope_ila_2_wrapper/tmp/_cg/chipscope_ila_2.asy -view all
+-origin_type imported
+Adding
+D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA/
+implementation/chipscope_ila_2_wrapper/tmp/_cg/chipscope_ila_2.ngc -view all
+-origin_type created
+Checking file
+"D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA
+/implementation/chipscope_ila_2_wrapper/tmp/_cg/chipscope_ila_2.ngc" for project
+device match ...
+File
+"D:/LR/Xilinx_projects/ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA
+/implementation/chipscope_ila_2_wrapper/tmp/_cg/chipscope_ila_2.ngc" device
+information matches project device.
+INFO:TclTasksC:2116 - The automatic calculation of top has been turned-off.
+   Please set the new top explicitly by running the "project set top" command.
+   To re-calculate the new top automatically, set the "Auto Implementation Top"
+   property to true.
+Top level has been set to "/chipscope_ila_2"
+Generating README file...
+Generating FLIST file...
+Moving files to output directory...
+Finished moving files to output directory
+Saved CGP file for project 'coregen'.
+*************************************************************
+
+Writing HDL for elaborated instances ...
+
+Inserting wrapper level ...
+Completion time: 2.00 seconds
+
+Constructing platform-level connectivity ...
+WARNING:EDK:4059 - INSTANCE: ETHERNET, Overriding connection of PORT:
+   AXI_STR_TXD_ARESETN, VALUE: AXI_STR_TXD_ARESETN - which is part of the
+   connected BUSIF: S_AXI -
+   D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_D
+   MA\system.mhs line 383
+WARNING:EDK:4059 - INSTANCE: ETHERNET, Overriding connection of PORT:
+   AXI_STR_TXC_ARESETN, VALUE: AXI_STR_TXC_ARESETN - which is part of the
+   connected BUSIF: S_AXI -
+   D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_D
+   MA\system.mhs line 383
+WARNING:EDK:4059 - INSTANCE: ETHERNET, Overriding connection of PORT:
+   AXI_STR_RXD_ARESETN, VALUE: AXI_STR_RXD_ARESETN - which is part of the
+   connected BUSIF: S_AXI -
+   D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_D
+   MA\system.mhs line 383
+WARNING:EDK:4059 - INSTANCE: ETHERNET, Overriding connection of PORT:
+   AXI_STR_RXS_ARESETN, VALUE: AXI_STR_RXS_ARESETN - which is part of the
+   connected BUSIF: S_AXI -
+   D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_D
+   MA\system.mhs line 383
+Completion time: 0.00 seconds
+
+Writing (top-level) BMM ...
+
+Writing (top-level and wrappers) HDL ...
+
+Generating synthesis project file ...
+
+Running XST synthesis ...
+
+INFO:EDK:4211 - The following instances are synthesized with XST. The MPD option
+   IMP_NETLIST=TRUE indicates that a NGC file is to be produced using XST
+   synthesis. IMP_NETLIST=FALSE (default) instances are not synthesized. 
+INSTANCE:proc_sys_reset_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 92 - Running XST synthesis
+INSTANCE:microblaze_0_intc -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 106 - Running XST synthesis
+INSTANCE:microblaze_0_ilmb -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 117 - Running XST synthesis
+INSTANCE:microblaze_0_i_bram_ctrl -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 124 - Running XST synthesis
+INSTANCE:microblaze_0_dlmb -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 133 - Running XST synthesis
+INSTANCE:microblaze_0_d_bram_ctrl -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 140 - Running XST synthesis
+INSTANCE:microblaze_0_bram_block -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 149 - Running XST synthesis
+INSTANCE:microblaze_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 156 - Running XST synthesis
+INSTANCE:debug_module -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 184 - Running XST synthesis
+INSTANCE:clock_generator_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 197 - Running XST synthesis
+INSTANCE:bpm_ddc_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 248 - Running XST synthesis
+INSTANCE:axi_timer_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 273 - Running XST synthesis
+INSTANCE:axi4lite_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 285 - Running XST synthesis
+INSTANCE:axi4_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 293 - Running XST synthesis
+INSTANCE:sysace_compactflash -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 300 - Running XST synthesis
+INSTANCE:rs232_uart_1 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 318 - Running XST synthesis
+INSTANCE:leds_8bits -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 334 - Running XST synthesis
+INSTANCE:ethernet_dma -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 348 - Running XST synthesis
+INSTANCE:ethernet -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 383 - Running XST synthesis
+INSTANCE:ddr3_sdram -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 438 - Running XST synthesis
+INSTANCE:xbpm_ddc_dma -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 481 - Running XST synthesis
+INSTANCE:chipscope_icon_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 510 - Running XST synthesis
+INSTANCE:chipscope_ila_1 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 519 - Running XST synthesis
+INSTANCE:chipscope_ila_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 532 - Running XST synthesis
+INSTANCE:fmc150_if_dma_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 545 - Running XST synthesis
+INSTANCE:xbpm_adc_dma -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 605 - Running XST synthesis
+INSTANCE:chipscope_ila_2 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 632 - Running XST synthesis
+
+Running NGCBUILD ...
+IPNAME:microblaze_0_ilmb_wrapper INSTANCE:microblaze_0_ilmb -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 117 - Running NGCBUILD
+IPNAME:microblaze_0_dlmb_wrapper INSTANCE:microblaze_0_dlmb -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 133 - Running NGCBUILD
+IPNAME:microblaze_0_wrapper INSTANCE:microblaze_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 156 - Running NGCBUILD
+IPNAME:clock_generator_0_wrapper INSTANCE:clock_generator_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 197 - Running NGCBUILD
+IPNAME:bpm_ddc_0_wrapper INSTANCE:bpm_ddc_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 248 - Running NGCBUILD
+IPNAME:axi4lite_0_wrapper INSTANCE:axi4lite_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 285 - Running NGCBUILD
+IPNAME:axi4_0_wrapper INSTANCE:axi4_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 293 - Running NGCBUILD
+IPNAME:ethernet_dma_wrapper INSTANCE:ethernet_dma -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 348 - Running NGCBUILD
+IPNAME:ethernet_wrapper INSTANCE:ethernet -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 383 - Running NGCBUILD
+IPNAME:ddr3_sdram_wrapper INSTANCE:ddr3_sdram -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 438 - Running NGCBUILD
+IPNAME:xbpm_ddc_dma_wrapper INSTANCE:xbpm_ddc_dma -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 481 - Running NGCBUILD
+IPNAME:chipscope_icon_0_wrapper INSTANCE:chipscope_icon_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 510 - Running NGCBUILD
+IPNAME:chipscope_ila_1_wrapper INSTANCE:chipscope_ila_1 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 519 - Running NGCBUILD
+IPNAME:chipscope_ila_0_wrapper INSTANCE:chipscope_ila_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 532 - Running NGCBUILD
+IPNAME:fmc150_if_dma_0_wrapper INSTANCE:fmc150_if_dma_0 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 545 - Running NGCBUILD
+IPNAME:xbpm_adc_dma_wrapper INSTANCE:xbpm_adc_dma -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 605 - Running NGCBUILD
+IPNAME:chipscope_ila_2_wrapper INSTANCE:chipscope_ila_2 -
+D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\
+system.mhs line 632 - Running NGCBUILD
+INFO:EDK:3509 - NCF files should not be modified as they will be regenerated.
+   If any constraint needs to be overridden, this should be done by modifying
+   the data/system.ucf file.
+
+Rebuilding cache ...
+
+Total run time: 4598.00 seconds

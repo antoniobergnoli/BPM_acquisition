@@ -1,0 +1,200 @@
+/*
+ * connection_server.c
+ *
+ *  Created on: Apr 2, 2012
+ *      Author: lucas.russo
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <string.h>
+#include <limits.h>
+
+#include "connection_server.h"
+#include "common.h"
+#include "pack/pack.h"
+
+#define FORMAT_SIZE 10
+
+/* Wrapper to pack function. In this case, send_buf should be at least
+RESPONSE_PACKET_SIZE bytes in length. See common.h for definitions*/
+static int prepare_to_write_response(unsigned char *send_buf, int len,
+		struct response_packet *response_packet_s){
+
+	int bytes_packed;
+	char format[FORMAT_SIZE];
+
+	/* Should have valid bytes in it */
+	if(len <= RESPONSE_PACKET_HEADER_SIZE)
+		return ERROR;
+
+	/* Pack header */
+	bytes_packed = pack(send_buf, "LL",
+			response_packet_s->comm,
+			response_packet_s->num);
+
+	/* Should be RESPOONSE_PACKET_HEADER_SIZE = 8 bytes*/
+	send_buf += bytes_packed;
+
+	//xil_printf("prepare_to_write_response bytes_packed = %d\n", bytes_packed);
+
+	/* Pack payload */
+	switch(response_packet_s->comm){
+		case FMC150_REG_VALUE:
+		case FMC150_NEW_DATA:
+		case FMC150_REMAINING_DATA:
+		case DDC_NEW_DATA:
+		case DDC_REMAINING_DATA:
+		case SOFT_REG_NEW_DATA:
+		case SOFT_REG_REMAINING_DATA:
+			memcpy(send_buf, response_packet_s->buf, response_packet_s->num);
+			//send_buf = *((unsigned char **)(response_packet_s->buf));
+			bytes_packed += response_packet_s->num;
+			//xil_printf("prepare_to_write_response bytes_packed2 = %d\n", bytes_packed);
+			//xil_printf("send buf = %08X\n", send_buf);
+			break;
+
+		case MESSAGE:
+		default:
+			sprintf(format, "%ds", (int)response_packet_s->num);
+			bytes_packed += pack(send_buf, format,
+					response_packet_s->buf);
+			break;
+	}
+
+	return bytes_packed;
+}
+
+/* Wrapper to unpack function. In this case, recv_buf should be at least
+ RESPONSE_PACKET_HEADER_SIZE bytes in length. See client.h definitions*/
+static int prepare_to_read_command(unsigned char *recv_buf, int len,
+		struct command_packet *command_packet_r){
+
+	if(len < COMMAND_PACKET_SIZE)
+		return ERROR;
+
+	unpack(recv_buf, "LLLL",
+			&command_packet_r->comm,
+			&command_packet_r->cs,
+			&command_packet_r->addr,
+			&command_packet_r->val);
+
+	return COMMAND_PACKET_SIZE;
+}
+
+int recv_command_packet(int sockfd, struct command_packet
+		*command_packet, int flags){
+
+	/* Awkward buf size, but it is correct */
+	unsigned char recv_buf[SEND_BUF_SIZE];
+	int n = 0, bytes_recv;
+
+	if((n = recvall(sockfd, recv_buf, COMMAND_PACKET_SIZE, flags)) <
+			0){
+		fprintf(stderr, "%s: ", __FUNCTION__);
+		perror("recv error");
+		return ERROR;
+	}
+
+	bytes_recv = n;
+
+	/* Server closed connection */
+	if(n == 0){
+		close(sockfd);
+		return bytes_recv;
+	}
+
+	/* Unpack response packet header and read the payload */
+	if((n = prepare_to_read_command(recv_buf, bytes_recv, command_packet)) < 0){
+		fprintf(stderr, "%s: prepare_to_read_comand error\n",
+				__FUNCTION__);
+		return ERROR;
+	}
+
+	return bytes_recv;
+}
+
+int send_response_packet(int sockfd, struct response_packet
+		*response_packet,	int flags){
+
+	unsigned char send_buf[RECV_BUF_SIZE];
+	int n = 0, bytes_sent = 0;
+
+	/* Pack response packet header and read the payload */
+	if((n = prepare_to_write_response(send_buf, response_packet->num + RESPONSE_PACKET_HEADER_SIZE, response_packet)) < 0){
+		fprintf(stderr, "%s: prepare_to_write_response error\n", __FUNCTION__);
+		return ERROR;
+	}
+
+	//xil_printf("send_response_packet n = %d\n", n);
+
+	/* n can be something between 0 and RESPONSE_PACKET_PAYLOAD_SIZE */
+	if((bytes_sent = sendall(sockfd, send_buf, n, flags)) < 0){
+		fprintf(stderr, "%s: sendall error\n", __FUNCTION__);
+		return ERROR;
+	}
+
+	//xil_printf("send_response_packet bytes_sent = %d\n", bytes_sent);
+
+	return bytes_sent;
+}
+
+void generate_data(struct command_packet *command_packet,
+		struct response_packet *response_packet){
+
+	int i;
+
+	response_packet->comm = rand() % MAX_RESPONSE_TYPES + 1;
+	response_packet->num = command_packet->val * ADC_SAMPLE_SIZE;
+
+	for(i = 0; i < response_packet->num/ADC_SAMPLE_SIZE; ++i)
+		/* Only poisitive values will be produced */
+		*((short int *)response_packet->buf + i) = (short int)(rand() % SHRT_MAX + 1);
+}
+
+int sendall(int sockfd, unsigned char *send_buf, int len, int flags){
+
+	int bytes_sent = 0;
+	int n;
+
+	/* loop as long as there are data to send */
+	while(bytes_sent < len){
+		if((n = lwip_send(sockfd, send_buf + bytes_sent,
+				len - bytes_sent, flags)) < 0){
+			fprintf(stderr, "%s: lwip_send error\n", __FUNCTION__);
+			return ERROR;
+		}
+
+		/* Client closed connection */
+		if(n == 0)
+			return 0;
+
+		/* increment bytes_sent by n */
+		bytes_sent += n;
+		}
+
+	return bytes_sent;
+}
+
+int recvall(int sockfd, unsigned char *recv_buf, int len, int flags){
+	int bytes_recvd = 0;
+	int n;
+
+	/* loop as long as there are data to send */
+	while(bytes_recvd < len){
+		if((n = lwip_recv(sockfd, recv_buf + bytes_recvd,
+				len - bytes_recvd, flags)) < 0){
+			fprintf(stderr, "%s: lwip_recv error\n", __FUNCTION__);
+			return ERROR;
+		}
+
+		/* Client closed connection */
+		if(n == 0)
+			return 0;
+
+		bytes_recvd += n;
+	}
+
+	return bytes_recvd;
+}

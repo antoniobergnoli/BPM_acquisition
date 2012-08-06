@@ -1,0 +1,25 @@
+##############################################################################
+## Filename:          D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\pcores/bpm_ddc_v1_00_a/data/bpm_ddc_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Tue Jul 31 10:19:14 2012 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib proc_common_v3_00_a all vhdl
+lib axi_lite_ipif_v1_01_a all vhdl
+lib bpm_ddc_v1_00_a bpm_ddc vhdl
+lib bpm_ddc_v1_00_a user_logic vhdl
+lib bpm_ddc_v1_00_a bpm_ddc_pkg vhdl
+lib bpm_ddc_v1_00_a bpm_ddc_pipe vhdl
+lib bpm_ddc_v1_00_a single_channel_ddc_pipe vhdl
+lib bpm_ddc_v1_00_a dds vhdl
+lib bpm_ddc_v1_00_a mixer vhdl
+lib bpm_ddc_v1_00_a cic_decimator vhdl
+lib bpm_ddc_v1_00_a cordic vhdl
+lib bpm_ddc_v1_00_a delta_over_sigma vhdl
+lib bpm_ddc_v1_00_a dma_pkg vhdl
+lib bpm_ddc_v1_00_a dma_if vhdl
+lib bpm_ddc_v1_00_a reset_synch vhdl
+lib bpm_ddc_v1_00_a dma_status_reg_synch vhdl
+lib bpm_ddc_v1_00_a arith_dsp48e_pkg vhdl
+lib bpm_ddc_v1_00_a utilities_pkg vhdl
+lib bpm_ddc_v1_00_a fifo vhdl

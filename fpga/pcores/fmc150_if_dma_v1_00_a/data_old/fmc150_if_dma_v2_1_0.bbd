@@ -1,0 +1,9 @@
+##############################################################################
+## Filename:          D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\pcores/fmc150_if_dma_v1_00_a/data/fmc150_if_dma_v2_1_0.bbd
+## Description:       Black Box Definition
+## Date:              Tue Jul 31 10:21:12 2012 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+Files
+################################################################################
+ads62p49_init_mem.ngc,amc7823_init_mem.ngc,cdce72010_init_mem_ext.ngc,cdce72010_init_mem_int.ngc,dac3283_init_mem.ngc,fifo.ngc,sin_cos.ngc

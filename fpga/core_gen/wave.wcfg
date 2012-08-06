@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/LR/Xilinx_projects/BPM_HDL_DDC/USER_LOGIC_TB_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="arith_dsp48e_pkg" />
+            <top_module name="axi_utils_pkg_v1_0" />
+            <top_module name="axi_utils_pkg_v1_1" />
+            <top_module name="axi_utils_v1_0_comps" />
+            <top_module name="axi_utils_v1_1_comps" />
+            <top_module name="bip_usecase_utils_pkg_v2_0" />
+            <top_module name="bip_utils_pkg_v2_0" />
+            <top_module name="bpm_ddc_pkg" />
+            <top_module name="cic_compiler_v3_0_fir_pkg" />
+            <top_module name="cic_compiler_v3_0_pkg" />
+            <top_module name="cic_compiler_v3_0_sim_comps" />
+            <top_module name="cordic_v5_0_comps" />
+            <top_module name="cordic_v5_0_pack" />
+            <top_module name="dds_compiler_v5_0_sim_comps" />
+            <top_module name="global_util_pkg_v1_0" />
+            <top_module name="global_util_pkg_v1_1" />
+            <top_module name="math_real" />
+            <top_module name="mult_gen_pkg_v11_0" />
+            <top_module name="mult_gen_pkg_v11_2" />
+            <top_module name="numeric_std" />
+            <top_module name="pkg_dds_compiler_v5_0" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_signed" />
+            <top_module name="std_logic_textio" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="textio" />
+            <top_module name="user_logic_tb" />
+            <top_module name="utilities_pkg" />
+            <top_module name="vcomponents" />
+            <top_module name="vital_primitives" />
+            <top_module name="vital_timing" />
+            <top_module name="vpkg" />
+            <top_module name="xbip_pipe_v2_0_comp" />
+            <top_module name="xbip_pipe_v2_0_xst_comp" />
+            <top_module name="xcc_utils_v2_0" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="61" />
+   <wvobject fp_name="/user_logic_tb/g_end_simulation" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">g_end_simulation</obj_property>
+      <obj_property name="ObjectShortName">g_end_simulation</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/sin_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sin_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">sin_data[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/rst_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst_i</obj_property>
+      <obj_property name="ObjectShortName">rst_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/adc_clk_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">adc_clk_i</obj_property>
+      <obj_property name="ObjectShortName">adc_clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/adc_data_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">adc_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_data_i[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/delta_sigma_x_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">delta_sigma_x_o[25:0]</obj_property>
+      <obj_property name="ObjectShortName">delta_sigma_x_o[25:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/delta_sigma_y_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">delta_sigma_y_o[25:0]</obj_property>
+      <obj_property name="ObjectShortName">delta_sigma_y_o[25:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/delta_sigma_z_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">delta_sigma_z_o[25:0]</obj_property>
+      <obj_property name="ObjectShortName">delta_sigma_z_o[25:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/delta_sigma_valid_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">delta_sigma_valid_o</obj_property>
+      <obj_property name="ObjectShortName">delta_sigma_valid_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/bpm_ddc_debug_clk_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bpm_ddc_debug_clk_o</obj_property>
+      <obj_property name="ObjectShortName">bpm_ddc_debug_clk_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/bpm_ddc_debug_data_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bpm_ddc_debug_data_o[1023:0]</obj_property>
+      <obj_property name="ObjectShortName">bpm_ddc_debug_data_o[1023:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/bpm_ddc_debug_trigger_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bpm_ddc_debug_trigger_o[63:0]</obj_property>
+      <obj_property name="ObjectShortName">bpm_ddc_debug_trigger_o[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/clock_period" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">clock_period</obj_property>
+      <obj_property name="ObjectShortName">clock_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/ip_width" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">ip_width</obj_property>
+      <obj_property name="ObjectShortName">ip_width</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider1039" type="divider">
+      <obj_property name="label">cmp_cha_ddc_pipe</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/rst_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst_i</obj_property>
+      <obj_property name="ObjectShortName">rst_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/adc_clk_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">adc_clk_i</obj_property>
+      <obj_property name="ObjectShortName">adc_clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/adc_channel_data_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">adc_channel_data_i[15:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_channel_data_i[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cordic_valid_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">cordic_valid_o</obj_property>
+      <obj_property name="ObjectShortName">cordic_valid_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/ext_ready_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ext_ready_i</obj_property>
+      <obj_property name="ObjectShortName">ext_ready_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cordic_data_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">cordic_data_o[47:0]</obj_property>
+      <obj_property name="ObjectShortName">cordic_data_o[47:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/bpm_ddc_debug_clk_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bpm_ddc_debug_clk_o</obj_property>
+      <obj_property name="ObjectShortName">bpm_ddc_debug_clk_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/bpm_ddc_debug_data_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bpm_ddc_debug_data_o[255:0]</obj_property>
+      <obj_property name="ObjectShortName">bpm_ddc_debug_data_o[255:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/bpm_ddc_debug_trigger_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bpm_ddc_debug_trigger_o[15:0]</obj_property>
+      <obj_property name="ObjectShortName">bpm_ddc_debug_trigger_o[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider1058" type="divider">
+      <obj_property name="label">cmp_cha_mixer_i</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_mixer_i/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_mixer_i/a" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">a[15:0]</obj_property>
+      <obj_property name="ObjectShortName">a[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_mixer_i/b" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">b[15:0]</obj_property>
+      <obj_property name="ObjectShortName">b[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_mixer_i/ce" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ce</obj_property>
+      <obj_property name="ObjectShortName">ce</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_mixer_i/p" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">p[23:0]</obj_property>
+      <obj_property name="ObjectShortName">p[23:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider1049" type="divider">
+      <obj_property name="label">cmp_cha_cic_i</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_i/aclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">aclk</obj_property>
+      <obj_property name="ObjectShortName">aclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_i/aresetn" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">aresetn</obj_property>
+      <obj_property name="ObjectShortName">aresetn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_i/s_axis_data_tdata" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">s_axis_data_tdata[23:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tdata[23:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_i/s_axis_data_tvalid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_i/s_axis_data_tready" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s_axis_data_tready</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_i/m_axis_data_tdata" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">m_axis_data_tdata[39:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tdata[39:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_i/m_axis_data_tvalid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">m_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_i/m_axis_data_tready" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">m_axis_data_tready</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_i/event_halted" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">event_halted</obj_property>
+      <obj_property name="ObjectShortName">event_halted</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider1329" type="divider">
+      <obj_property name="label">cmp_cha_cic_q</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_q/aclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">aclk</obj_property>
+      <obj_property name="ObjectShortName">aclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_q/aresetn" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">aresetn</obj_property>
+      <obj_property name="ObjectShortName">aresetn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_q/s_axis_data_tdata" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">s_axis_data_tdata[23:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tdata[23:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_q/s_axis_data_tvalid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_q/s_axis_data_tready" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s_axis_data_tready</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_q/m_axis_data_tdata" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">m_axis_data_tdata[39:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tdata[39:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_q/m_axis_data_tvalid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">m_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_q/m_axis_data_tready" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">m_axis_data_tready</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cic_decimator_q/event_halted" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">event_halted</obj_property>
+      <obj_property name="ObjectShortName">event_halted</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider1321" type="divider">
+      <obj_property name="label">cmp_cha_cordic</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/aclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">aclk</obj_property>
+      <obj_property name="ObjectShortName">aclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tvalid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s_axis_cartesian_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_cartesian_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tready" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s_axis_cartesian_tready</obj_property>
+      <obj_property name="ObjectShortName">s_axis_cartesian_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata" type="array" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">s_axis_cartesian_tdata[47:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_cartesian_tdata[47:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="label">s_axis_cartesian_tdata[47:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="vbus370" type="vbus" db_ref_id="1">
+      <obj_property name="label">s_axis_cartesian_tdata_q</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[47]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[47]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[47]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[46]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[46]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[46]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[45]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[45]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[45]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[44]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[44]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[44]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[43]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[43]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[43]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[42]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[42]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[42]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[41]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[41]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[41]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[40]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[40]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[40]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[39]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[39]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[39]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[38]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[38]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[38]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[37]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[37]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[37]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[36]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[36]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[36]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[35]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[35]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[35]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[34]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[34]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[34]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[33]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[33]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[33]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[32]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[32]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[32]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[31]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[31]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[30]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[30]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[30]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[29]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[29]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[29]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[28]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[28]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[28]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[27]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[27]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[27]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[26]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[26]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[26]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[25]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[25]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[25]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[24]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[24]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[24]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus345" type="vbus" db_ref_id="1">
+      <obj_property name="label">s_axis_cartesian_tdata_i</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[23]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[23]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[23]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[22]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[22]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[22]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[21]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[21]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[21]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[20]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[20]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[20]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[19]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[19]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[19]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[18]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[18]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[18]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[17]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[17]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[17]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[16]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[16]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[16]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[15]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[15]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[15]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[14]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[14]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[14]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[13]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[13]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[13]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[12]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[12]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[12]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[11]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[11]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[11]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[10]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[10]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[10]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[9]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[9]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[8]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[8]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[7]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[7]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[6]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[6]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[5]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[5]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[4]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[3]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[2]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[1]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/s_axis_cartesian_tdata[0]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_cartesian_tdata[0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tready" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">m_axis_dout_tready</obj_property>
+      <obj_property name="ObjectShortName">m_axis_dout_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata" type="array" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">m_axis_dout_tdata[47:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_dout_tdata[47:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="label">m_axis_dout_tdata[47:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tvalid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">m_axis_dout_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_dout_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="vbus192" type="vbus" db_ref_id="1">
+      <obj_property name="label">m_axis_dout_tdata[23:0]</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[23]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[23]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[23]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[22]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[22]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[22]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[21]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[21]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[21]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[20]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[20]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[20]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[19]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[19]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[19]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[18]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[18]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[18]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[17]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[17]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[17]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[16]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[16]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[16]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[15]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[15]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[15]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[14]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[14]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[14]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[13]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[13]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[13]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[12]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[12]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[12]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[11]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[11]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[11]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[10]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[10]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[10]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[9]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[9]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[8]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[8]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[7]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[7]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[6]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[6]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[5]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[5]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[4]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[3]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[2]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[1]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/user_logic_tb/cmp_bpm_ddc/cmp_cha_ddc_pipe/cmp_cordic/m_axis_dout_tdata[0]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_dout_tdata[0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

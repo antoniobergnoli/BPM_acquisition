@@ -1,0 +1,12 @@
+elfcheck
+Xilinx EDK 13.4 Build EDK_O.87xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw
+../../ML605_System_fmc150_testbench4_DMA_hw_platform/system.xml -pe microblaze_0
+fmc150_acquisition_0.elf 
+
+ELF file	: fmc150_acquisition_0.elf
+ERROR:EDK:756 - Cannot read XML file
+   ../../ML605_System_fmc150_testbench4_DMA_hw_platform/system.xml
+Error: Creating Hardware Debug Object from ../../ML605_System_fmc150_testbench4_DMA_hw_platform/system.xml

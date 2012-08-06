@@ -1,0 +1,6 @@
+vhdl isim_temp "mixer.vhd"
+vhdl isim_temp "dds.vhd"
+vhdl isim_temp "cordic.vhd"
+vhdl isim_temp "cic_decimator.vhd"
+vhdl isim_temp "bpm_ddc_pkg.vhd"
+vhdl isim_temp "single_channel_ddc_pipe.vhd"

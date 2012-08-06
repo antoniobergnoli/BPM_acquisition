@@ -1,0 +1,56 @@
+;******************************************************************
+;** CECE72010 Initialization                                     **
+;******************************************************************
+;** The register settings allows the clock signals derived from  **
+;** an external 3.84MHz signal                                 	 **
+;******************************************************************
+;
+; Paramaters
+; delta_f = 40MHz
+; fc = 460.8MHz
+; fs = 122.88MHz
+; NZ = 8
+; h = 120
+; frev = 3.84MHz
+; fadc = fs = frev * 32 (possible solution from System 1 below)
+;
+; Formulas
+;
+; fs > 2*delta_f
+; fs = 4*fc / 2*NZ-1
+;
+; System 1:
+; frev*Y = fs
+; fc/X = frev
+;
+;******************************************************************
+;
+; This .COE file specifies initialization values for a block
+; memory of depth=16, and width=32.
+; Values are specified in hexadecimal format:
+; 28 MSB = data, 4 LSB = address.
+;
+; Loading from ROM stops when address 0xC has been processed.
+; therefore this register must be the last entry in this file.
+;
+;******************************************************************
+;
+memory_initialization_radix=16;
+memory_initialization_vector=
+682C0290,
+68840041,
+;83020002,	;divide by 6
+;83860002,	;divide by 5
+;83800002,	;divide by 2
+83840002,	;divide by 4
+;83060002,	;divide by 8
+68400003,
+E9800004,
+68000005,
+68000006,
+83800017,
+68000098,
+68000049,
+77FC4B6A,
+8000050B,
+0000180C;

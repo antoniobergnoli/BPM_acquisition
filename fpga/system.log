@@ -1,0 +1,13 @@
+Xilinx Platform Studio (XPS)
+Xilinx EDK 13.4 Build EDK_O.87xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+WARNING:EDK:4058 - INSTANCE: ETHERNET_dma, BUS_INTERFACE: M_AXI_SG -  is not connected to any slave. 
+WARNING:EDK:4058 - INSTANCE: ETHERNET_dma, BUS_INTERFACE: M_AXI_MM2S -  is not connected to any slave. 
+WARNING:EDK:4058 - INSTANCE: ETHERNET_dma, BUS_INTERFACE: M_AXI_S2MM -  is not connected to any slave. 
+WARNING:EDK:4058 - INSTANCE: XBPM_DDC_dma, BUS_INTERFACE: M_AXI_S2MM -  is not connected to any slave. 
+Writing filter settings....
+Done writing filter settings to:
+	D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA_FIX\etc\system.filters
+Done writing Tab View settings to:
+	D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA_FIX\etc\system.gui

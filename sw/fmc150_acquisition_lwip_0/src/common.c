@@ -1,0 +1,141 @@
+/*
+ * common.c
+ *
+ *  Created on: Jun 11, 2012
+ *      Author: lucas.russo
+ */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "common.h"
+
+int print_command_packet(struct command_packet *command_packet){
+
+	if(command_packet == NULL){
+		fprintf(stderr, "%s got NULL pointer\n", __FUNCTION__);
+		return ERROR;
+	}
+
+	xil_printf("Command: %d\n", command_packet->comm);
+	xil_printf("cs: %d\n", command_packet->cs);
+	xil_printf("addr: %08X\n", command_packet->addr);
+	xil_printf("val: %08X\n", command_packet->val);
+
+	return SUCCESS;
+}
+
+int print_response_packet(struct response_packet *response_packet){
+
+	int valid_bytes;
+
+	if(response_packet == NULL){
+		fprintf(stderr, "%s got NULL pointer\n", __FUNCTION__);
+		return ERROR;
+	}
+
+	valid_bytes = response_packet->num;
+	xil_printf("Response type: %d\n", response_packet->comm);
+	xil_printf("Response valid bytes: %d\n", valid_bytes);
+
+	xil_printf("Response data: \n");
+	switch(response_packet->comm){
+		int i;
+
+		case FMC150_NEW_DATA:
+		case FMC150_REMAINING_DATA:
+
+			for(i = 0; i < valid_bytes/ADC_SAMPLE_SIZE; ++i){
+				xil_printf("%d:\t%d\t%d\n",
+						i,
+						*((short int *)((char *)response_packet->buf+i*ADC_SAMPLE_SIZE)),
+						*((short int *)((char *)response_packet->buf+i*ADC_SAMPLE_SIZE+2)));
+			}
+			break;
+
+		case DDC_NEW_DATA:
+		case DDC_REMAINING_DATA:
+			// the delta/sigma fractional samples are represented in memory as:
+			// sum(32-bit)   / x_sample(32-bit) 	/ y_sample(32-bit) / z_sample(32-bit)
+			// 127  -  96  /   95  -  64	    /	63  -  32	   /	31  -  0
+			for(i = 0; i < valid_bytes/DDC_SAMPLE_SIZE; ++i){
+				printf("%d:\t%8f\t%8f\t%8f\t%8f\n",
+						i,
+						(float)(*((float *)((char *)response_packet->buf+i*DDC_SAMPLE_SIZE+12)))/TWO_EXP_26,
+						(float)(*((float *)((char *)response_packet->buf+i*DDC_SAMPLE_SIZE+8)))/TWO_EXP_26,
+						(float)(*((float *)((char *)response_packet->buf+i*DDC_SAMPLE_SIZE+4)))/TWO_EXP_26,
+						(float)(*((float *)((char *)response_packet->buf+i*DDC_SAMPLE_SIZE)))/TWO_EXP_26);
+			}
+			break;
+
+		case FMC150_REG_VALUE:
+		case SOFT_REG_NEW_DATA:
+			xil_printf("Reg Value = %08X\n", *((u32 *)response_packet->buf));
+			break;
+
+		case MESSAGE:
+		default:
+			xil_printf("%.*s\n", valid_bytes, (char *)response_packet->buf);
+			break;
+	}
+
+	return SUCCESS;
+}
+
+/* This function expects the following string format:
+ * <command_number> <cs> <addr> <value> \n
+ * Anything different is treated as an error.
+ */
+int tokenize_send_buffer(char *send_buffer,
+		struct command_packet *command_packet_s){
+
+	int comm, cs, addr, val;
+	char *tok;
+
+	/* Should be an integer representing the command number.
+	 * No need to test if the string received by atoi is null.
+	 *if that's the case, atoi returns 0 */
+	tok = strtok(send_buffer, " ");
+	if( tok == NULL ){
+		return ERROR;
+	}
+
+	comm = atoi(tok);
+
+	/* test string */
+	if(comm <= 0 || comm > MAX_COMMANDS){
+		return ERROR;
+	}
+
+	tok = strtok(NULL, " ");
+	if( tok == NULL ){
+		return ERROR;
+	}
+
+	cs = atoi(tok);
+
+	/* Should I test for any address violations ?*/
+	tok = strtok(NULL, " ");
+	if(tok == NULL){
+		return ERROR;
+	}
+
+	addr = atoi(tok);
+
+	/* Value filled extraction */
+	tok = strtok(NULL, " ");
+	if( tok == NULL ){
+		return ERROR;
+	}
+
+	val = atoi(tok);
+
+	/* Packetize information */
+	command_packet_s->comm = comm;
+	command_packet_s->cs = cs;
+	command_packet_s->addr = addr;
+	command_packet_s->val = val;
+
+	return SUCCESS;
+}

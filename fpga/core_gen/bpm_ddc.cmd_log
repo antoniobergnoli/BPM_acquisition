@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "D:/LR/Xilinx_projects/BPM_HDL_DDC/bpm_ddc.xst" -ofn "D:/LR/Xilinx_projects/BPM_HDL_DDC/bpm_ddc.syr" 

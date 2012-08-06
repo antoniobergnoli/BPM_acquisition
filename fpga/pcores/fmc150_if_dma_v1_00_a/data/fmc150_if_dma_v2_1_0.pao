@@ -1,0 +1,30 @@
+##############################################################################
+## Filename:          D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\pcores/fmc150_if_dma_v1_00_a/data/fmc150_if_dma_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Wed Aug 01 10:14:22 2012 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib proc_common_v3_00_a all vhdl
+lib axi_lite_ipif_v1_01_a all vhdl
+lib fmc150_if_dma_v1_00_a dma_pkg vhdl
+lib fmc150_if_dma_v1_00_a dma_if vhdl
+lib fmc150_if_dma_v1_00_a reset_synch vhdl
+lib fmc150_if_dma_v1_00_a dma_status_reg_synch vhdl
+lib fmc150_if_dma_v1_00_a utilities_pkg vhdl
+lib fmc150_if_dma_v1_00_a fifo vhdl
+lib fmc150_if_dma_v1_00_a user_logic vhdl
+lib fmc150_if_dma_v1_00_a fmc150_if_dma vhdl
+lib fmc150_if_dma_v1_00_a adc_pkg vhdl
+lib fmc150_if_dma_v1_00_a adc_channel_lvds_ddr vhdl
+lib fmc150_if_dma_v1_00_a strobe_lvds vhdl
+lib fmc150_if_dma_v1_00_a fmc150_pkg vhdl
+lib fmc150_if_dma_v1_00_a fmc150_testbench vhdl
+lib fmc150_if_dma_v1_00_a ads62p49_ctrl vhdl
+lib fmc150_if_dma_v1_00_a amc7823_ctrl vhdl
+lib fmc150_if_dma_v1_00_a cdce72010_ctrl vhdl
+lib fmc150_if_dma_v1_00_a dac3283_ctrl vhdl
+lib fmc150_if_dma_v1_00_a fmc150_adc_if vhdl
+lib fmc150_if_dma_v1_00_a fmc150_dac_if vhdl
+lib fmc150_if_dma_v1_00_a fmc150_spi_ctrl vhdl
+lib fmc150_if_dma_v1_00_a fmc150_stellar_cmd vhdl
+lib fmc150_if_dma_v1_00_a pulse2pulse vhdl

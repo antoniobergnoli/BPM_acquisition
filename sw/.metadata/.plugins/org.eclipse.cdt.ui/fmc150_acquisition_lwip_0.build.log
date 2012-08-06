@@ -1,0 +1,42 @@
+
+**** Build of configuration Debug for project fmc150_acquisition_lwip_0 ****
+
+make all 
+Building file: ../src/low_level_op.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -D __XMK__ -I../../fmc150_acquisition_lwip_bsp_0/microblaze_0/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -MMD -MP -MF"src/low_level_op.d" -MT"src/low_level_op.d" -o"src/low_level_op.o" "../src/low_level_op.c"
+../src/low_level_op.c: In function 'capture_samples':
+../src/low_level_op.c:191: warning: passing argument 2 of 'XAxiDma_SimpleTransfer' makes integer from pointer without a cast
+../src/low_level_op.c:192: warning: implicit declaration of function 'xil_printf'
+Finished building: ../src/low_level_op.c
+' '
+Building file: ../src/server.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -D __XMK__ -I../../fmc150_acquisition_lwip_bsp_0/microblaze_0/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -MMD -MP -MF"src/server.d" -MT"src/server.d" -o"src/server.o" "../src/server.c"
+Finished building: ../src/server.c
+' '
+Building target: fmc150_acquisition_lwip_0.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../fmc150_acquisition_lwip_bsp_0/microblaze_0/lib -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -o"fmc150_acquisition_lwip_0.elf"  ./src/common.o ./src/connection_server.o ./src/dispatch.o ./src/init.o ./src/low_level_op.o ./src/main.o ./src/platform.o ./src/server.o  ./src/pack/pack.o   -lxilkernel -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: fmc150_acquisition_lwip_0.elf
+' '
+Invoking: MicroBlaze Print Size
+mb-size fmc150_acquisition_lwip_0.elf  |tee "fmc150_acquisition_lwip_0.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 192584	   3240	10106671	10302495	 9d341f	fmc150_acquisition_lwip_0.elf
+Finished building: fmc150_acquisition_lwip_0.elf.size
+' '
+Invoking: Xilinx ELF Check
+elfcheck fmc150_acquisition_lwip_0.elf -hw ../../ML605_System_fmc150_testbench11_ADC_DDC_DMA_hw_plataform/system.xml -pe microblaze_0  |tee "fmc150_acquisition_lwip_0.elf.elfcheck"
+elfcheck
+Xilinx EDK 13.4 Build EDK_O.87xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw
+../../ML605_System_fmc150_testbench11_ADC_DDC_DMA_hw_plataform/system.xml -pe
+microblaze_0 fmc150_acquisition_lwip_0.elf 
+
+ELF file	: fmc150_acquisition_lwip_0.elf
+elfcheck passed.
+Finished building: fmc150_acquisition_lwip_0.elf.elfcheck
+' '

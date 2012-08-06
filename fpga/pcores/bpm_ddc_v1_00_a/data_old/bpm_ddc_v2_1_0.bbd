@@ -1,0 +1,9 @@
+##############################################################################
+## Filename:          D:\LR\Xilinx_projects\ML605_System_fmc150_testbench13_ext_clock_BPM_ADC_DDC_DMA\pcores/bpm_ddc_v1_00_a/data/bpm_ddc_v2_1_0.bbd
+## Description:       Black Box Definition
+## Date:              Tue Jul 31 10:19:14 2012 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+Files
+################################################################################
+cic_decimator.ngc,cordic.ngc,dds.ngc,fifo.ngc,fixed_point_divider.ngc,mixer.ngc

@@ -1,0 +1,447 @@
+/*
+ * server.c
+ *
+ *  Created on: Apr 2, 2012
+ *      Author: lucas.russo
+ *
+ * Extended from Xilinx Reference design
+ *
+ * Copyright (c) 2007-2009 Xilinx, Inc.  All rights reserved.
+ *
+ * Xilinx, Inc.
+ * XILINX IS PROVIDING THIS DESIGN, CODE, OR INFORMATION "AS IS" AS A
+ * COURTESY TO YOU.  BY PROVIDING THIS DESIGN, CODE, OR INFORMATION AS
+ * ONE POSSIBLE   IMPLEMENTATION OF THIS FEATURE, APPLICATION OR
+ * STANDARD, XILINX IS MAKING NO REPRESENTATION THAT THIS IMPLEMENTATION
+ * IS FREE FROM ANY CLAIMS OF INFRINGEMENT, AND YOU ARE RESPONSIBLE
+ * FOR OBTAINING ANY RIGHTS YOU MAY REQUIRE FOR YOUR IMPLEMENTATION.
+ * XILINX EXPRESSLY DISCLAIMS ANY WARRANTY WHATSOEVER WITH RESPECT TO
+ * THE ADEQUACY OF THE IMPLEMENTATION, INCLUDING BUT NOT LIMITED TO
+ * ANY WARRANTIES OR REPRESENTATIONS THAT THIS IMPLEMENTATION IS FREE
+ * FROM CLAIMS OF INFRINGEMENT, IMPLIED WARRANTIES OF MERCHANTABILITY
+ * AND FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ */
+
+#include <stdio.h>
+#include <string.h>
+
+#include "lwip/inet.h"
+#include "lwip/sockets.h"
+#include "lwip/sys.h"
+#include "lwipopts.h"
+#include "common.h"
+
+#include "common.h"
+#include "connection_server.h"
+#include "config_apps.h"
+#include "low_level_op.h"
+#include "server.h"
+#include "pack/pack.h"
+
+u16_t port = 8006;
+/* buffer to hold the acquired samples */
+extern u32 dma_buf[MAX_DMA_TRANSFER_SIZE/4];
+
+#define IP_TEXT_SIZE 20
+
+void print_server_app_header()
+{
+    xil_printf("%20s %6d %s\r\n", "server",
+                        port,
+                        "$ client <board_ip>");
+
+}
+
+int prepare_to_handle(struct command_packet *command_packet_r){
+
+	int remaining_bytes;
+
+	switch(command_packet_r->comm){
+		case FMC150_GET_SAMPLES:
+			remaining_bytes = command_packet_r->val*ADC_SAMPLE_SIZE;
+			break;
+
+		case DDC_GET_SAMPLES:
+			remaining_bytes = command_packet_r->val*DDC_SAMPLE_SIZE;
+			break;
+
+		default:
+			/* Depends which string will be printed. Put a dummy value */
+			remaining_bytes = 1;
+	}
+
+	return remaining_bytes;
+}
+
+int get_command_handler(unsigned int comm, struct command_handler *comm_handler){
+	int error;
+
+	comm_handler->comm = comm;
+
+	switch(comm){
+		/*case FMC150_ADC_DELAY:*/
+		case FMC150_CAPTURE:
+		case FMC150_GET_SAMPLES:
+		case FMC150_READ:
+		case FMC150_WRITE:
+			comm_handler->comm_attr = &fmc150_comm_attr;
+			comm_handler->comm_ops = &fmc150_comm_ops;
+			error = SUCCESS;
+			break;
+
+		case DDC_CAPTURE:
+		case DDC_GET_SAMPLES:
+		/*case DDC_READ:
+		case DDC_WRITE:*/
+			comm_handler->comm_attr = &ddc_comm_attr;
+			comm_handler->comm_ops = &ddc_comm_ops;
+			error = SUCCESS;
+			break;
+
+		case LED_READ:
+		case LED_WRITE:
+			comm_handler->comm_attr = &led_comm_attr;
+			comm_handler->comm_ops = &led_comm_ops;
+			error = SUCCESS;
+			break;
+		default:
+			error = ERROR;
+	}
+
+	return error;
+}
+
+int get_response_handler(unsigned int comm, struct response_handler *res_handler){
+	int error;
+
+	switch(comm){
+		/*case FMC150_ADC_DELAY:*/
+		case FMC150_CAPTURE:
+		case FMC150_GET_SAMPLES:
+		case FMC150_READ:
+		case FMC150_WRITE:
+			res_handler->new_data_id = FMC150_NEW_DATA;
+			res_handler->remaining_data_id = FMC150_REMAINING_DATA;
+			res_handler->byte_offset = 0;
+			error = SUCCESS;
+			break;
+
+		case DDC_CAPTURE:
+		case DDC_GET_SAMPLES:
+		/*case DDC_READ:
+		case DDC_WRITE:*/
+			res_handler->new_data_id = DDC_NEW_DATA;
+			res_handler->remaining_data_id = DDC_REMAINING_DATA;
+			res_handler->byte_offset = 0;
+			error = SUCCESS;
+			break;
+
+		case LED_READ:
+		case LED_WRITE:
+			res_handler->new_data_id = 0;
+			res_handler->remaining_data_id = 0;
+			res_handler->byte_offset = 0;
+			error = SUCCESS;
+			break;
+		default:
+			error = ERROR;
+	}
+
+	return error;
+}
+
+int handle_request(struct command_packet *command_packet_r, struct response_packet *response_packet_s){
+
+	u32 comm, addr, val, cs;
+	int error;
+	struct command_handler comm_handler;
+	struct response_handler res_handler;
+	struct low_level_handler *low_lev_handler;
+
+	/* Extract fields */
+	comm = command_packet_r->comm;
+	cs = command_packet_r->cs;
+	addr = command_packet_r->addr;
+	val = command_packet_r->val;
+
+	/*get_command_handler(comm, &comm_handler);*/
+	if(get_command_handler(comm, &comm_handler) < 0){
+		/* No command handler available */
+		xil_printf("No command handler available!\n");
+		return ERROR;
+	}
+
+	if(get_response_handler(comm, &res_handler) < 0){
+		/* No command handler available */
+		xil_printf("No response handler available!\n");
+		return ERROR;
+	}
+
+	/* Necessary for the DMA operations! */
+	if(get_low_level_handler(comm, &low_lev_handler) < 0){
+		/* No command handler available */
+		xil_printf("No low level handler available!\n");
+		return ERROR;
+	}
+
+	/* Commom response type is message */
+	response_packet_s->comm = 1;
+	error = 0;
+
+	switch(comm_handler.comm){
+		case FMC150_ADC_DELAY:
+			if(update_fmc150_adc_delay((val & 0x000000FF) , (val & 0x0000FF00) >> 8 ,  (val & 0x00FF0000) >> 16) < 0){
+				response_packet_s->num = sprintf((char *)response_packet_s->buf, "Error updating adc_delay!") + 1;
+				error = 1;
+			}
+			else
+				response_packet_s->num = sprintf((char *)response_packet_s->buf, "Adc delay successfully updated!") + 1;
+			break;
+
+		/* Non blocking operation */
+		case FMC150_CAPTURE:
+		case DDC_CAPTURE:
+		case DDC_FMC150_CAPTURE:
+			if(val < 0 || val > comm_handler.comm_attr->max_samples /*MAX_SAMPLES_COUNT*/)
+			{
+				response_packet_s->num = sprintf((char *)response_packet_s->buf, "Invalid value! Must be between 0 and %d", comm_handler.comm_attr->max_samples) + 1;
+				error = 1;
+				break;
+			}
+
+			if(comm_handler.comm_ops->capture_samples(val, low_lev_handler) < 0){
+				response_packet_s->num = sprintf((char *)response_packet_s->buf, "Error acquiring data!") + 1;
+				error = 1;
+			}
+			else
+				response_packet_s->num = sprintf((char *)response_packet_s->buf, "Capture command started successfully!") + 1;
+
+			break;
+		case FMC150_GET_SAMPLES:
+		case DDC_GET_SAMPLES:
+		case DDC_FMC150_GET_SAMPLES:
+
+			// Check for value greater than the buffer size (= dma engine max transfer)
+			if(val < 0 || val > comm_handler.comm_attr->max_samples)
+			{
+				response_packet_s->num = sprintf((char *)response_packet_s->buf, "Invalid value! Must be between 0 and %d", comm_handler.comm_attr->max_samples) + 1;
+				error = 1;
+				break;
+			}
+
+			/* byte_offset will have the offset from the beginning of the buffer
+			 * and val will have the number of bytes that we can actually read from it
+			 */
+			if(comm_handler.comm_ops->get_samples(&val, (u32 *)&res_handler.byte_offset, low_lev_handler) < 0){
+				response_packet_s->num = sprintf((char *)response_packet_s->buf,
+						"Error! Could not acquire data!") + 1;
+				error = 1;
+				break;
+			}
+
+			/* Dump memory with format "%d\t%d\n", element size comm_handler.comm_attr->sample_size,
+			 * at location low_lev_handler->attr->mem_start_addr,
+			 * size val*comm_handler.comm_attr->sample_size bytes */
+			/*dump_mem_adc(((char *)(low_lev_handler->attr->mem_start_addr) + res_handler.byte_offset),
+					val*comm_handler.comm_attr->sample_size);*/
+
+			//memcpy(response_packet_s->buf, ((char *)(dma_buf/*low_lev_handler->attr->mem_start_addr*/) + res_handler.byte_offset), val*comm_handler.comm_attr->sample_size );
+			xil_printf("Dma buf + offset = %08X\n", ((unsigned char *)(dma_buf/*low_lev_handler->attr->mem_start_addr*/) + res_handler.byte_offset));
+			*((unsigned char **)(response_packet_s->buf)) = ((unsigned char *)(dma_buf/*low_lev_handler->attr->mem_start_addr*/) + res_handler.byte_offset);
+			xil_printf("Response buf = %08X\n", (response_packet_s->buf));
+			/* Check if this is a new transaction or the remaining of an old one */
+			response_packet_s->comm = (res_handler.byte_offset == 0) ? res_handler.new_data_id : res_handler.remaining_data_id;
+			response_packet_s->num = val*comm_handler.comm_attr->sample_size;
+
+#ifdef SERVER_DEBUG
+			xil_printf("Response_packet_s->num = %d\n", response_packet_s->num);
+#endif
+			break;
+
+		/* Note the change in the use of the "val" variable */
+		case FMC150_READ:
+		case DDC_READ:
+			if(comm_handler.comm_ops->read_reg(cs, addr, &val) < 0){
+				response_packet_s->num = sprintf((char *)response_packet_s->buf,
+						"Error reading from register!") + 1;
+				error = 1;
+			}
+			else{
+				/*response_packet_s->num = sprintf((char *)response_packet_s->buf, "reg @0x%08X: 0x%08X",
+						(unsigned int)addr, (unsigned int)val) + 1;*/
+				memcpy(response_packet_s->buf, (char *)(&val), sizeof(u32));
+				response_packet_s->comm = FMC150_REG_VALUE;
+				response_packet_s->num = sizeof(u32);
+			}
+			break;
+
+		case FMC150_WRITE:
+		case DDC_WRITE:
+			if(comm_handler.comm_ops->write_reg(cs, addr, (u32)val) < 0){
+				response_packet_s->num = sprintf((char *)response_packet_s->buf,
+						"Error writing to register!") + 1;
+				error = 1;
+			}
+			else
+				response_packet_s->num = sprintf((char *)response_packet_s->buf,
+						"Write to register ok!") + 1;
+			break;
+
+		case LED_READ:
+			if(led_read(0, 0, &val) < 0){
+				response_packet_s->num = sprintf((char *)response_packet_s->buf,
+						"Error read from led!") + 1;
+				error = 1;
+			}
+			else
+				response_packet_s->num = sprintf((char *)response_packet_s->buf,
+						"Led value: 0x%08X", (unsigned int)val) + 1;
+			break;
+
+		case LED_WRITE:
+			if(led_write(0, 0, val) < 0){
+				response_packet_s->num = sprintf((char *)response_packet_s->buf,
+						"Error writing to led!") + 1;
+				error = 1;
+			}
+			else
+				response_packet_s->num = sprintf((char *)response_packet_s->buf,
+						"Led successfully written!") + 1;
+			break;
+
+		case QUIT:
+			response_packet_s->num = sprintf((char *)response_packet_s->buf,
+									"Server side connection closed!") + 1;
+			/* Will close socket and return */
+			return ERROR;
+
+		/* Should not happen */
+		default:
+			response_packet_s->num = sprintf((char *)response_packet_s->buf,
+												"Unexpected command!") + 1;
+			break;
+	}
+
+	return (error == 1) ? ERROR : response_packet_s->num;
+}
+
+/* thread spawned for each connection */
+void process_client_request(void *p)
+{
+	int fd = (int)p;
+	int n_recv, n_send;
+	int error = 0;					/* start with no errors */
+	/* # of samples to send*/
+	int remaining_bytes, valid_bytes_packet;
+	struct command_packet command_packet_r;
+	struct response_packet response_packet_s;
+
+#ifdef SERVER_DEBUG
+	int i = 0;
+#endif
+
+	while (1) {
+		/* read packet from socket. */
+		/* Receive packet over the socket interface */
+		if ((n_recv = recv_command_packet(fd, &command_packet_r, 0)) < 0) {
+			 fprintf(stderr, "%s: recv_command_packet error\n", __FUNCTION__);
+			 break;
+		}
+
+		if(n_recv == 0){
+			xil_printf("Client side connection closed!\n");
+			break;
+		}
+
+#ifdef SERVER_DEBUGG
+		xil_printf("process_client_request: Num bytes read: %d\n", n_recv);
+		print_command_packet(&command_packet_r);
+#endif
+
+		/* Remaining bytes to be sent back to client excluding eventually headers*/
+		remaining_bytes = prepare_to_handle(&command_packet_r);
+
+#ifdef SERVER_DEBUG
+		xil_printf("process_client_request: remaining_bytes before send: %d\n", remaining_bytes);
+#endif
+
+		//build_send_response_packet
+		while(remaining_bytes > 0 && !error){
+			/* Handle request */
+			if((valid_bytes_packet = handle_request(&command_packet_r, &response_packet_s)) < 0){
+				/* Send message to client and close socket */
+				xil_printf("%s: error handling request buffer from socket %d, closing socket\r\n", __FUNCTION__, fd);
+				error = 1;
+				/* Do NOT break here. send response error packet first! */
+				//break;
+			}
+
+#ifdef SERVER_DEBUG
+		xil_printf("process_client_request: Valid_bytes_packet: %d\n", valid_bytes_packet);
+#endif
+
+#ifdef SERVER_DEBUGG
+			print_response_packet(&response_packet_s);
+#endif
+
+			/* Send packet over socket the socket interface */
+			if ((n_send = send_response_packet(fd, &response_packet_s, 0)) < 0) {
+				 fprintf(stderr, "%s: send_response_packet error\n", __FUNCTION__);
+				 break;
+			}
+
+#ifdef SERVER_DEBUG
+			printf("process_client_request: Num bytes sent: %d\n", n_send);
+#endif
+
+			//transaction_size -= min_transaction_size;
+			remaining_bytes -= valid_bytes_packet;
+#ifdef SERVER_DEBUG
+			xil_printf("process_client_request: Remaining_bytes: %d\n", remaining_bytes);
+			i++;
+#endif
+		}
+
+#ifdef SERVER_DEBUG
+		xil_printf("process_client_request: # of transactions: %d\n", i);
+#endif
+	}
+
+	/* close connection */
+	close(fd);
+}
+
+void server_application_thread()
+{
+	int sock, new_sd;
+	struct sockaddr_in address, remote;
+	int size;
+	char ip[IP_TEXT_SIZE];
+
+	if ((sock = lwip_socket(AF_INET, SOCK_STREAM, 0)) < 0)
+		return;
+
+	address.sin_family = AF_INET;
+	address.sin_port = htons(port);
+	address.sin_addr.s_addr = INADDR_ANY;
+
+	if (lwip_bind(sock, (struct sockaddr *)&address, sizeof (address)) < 0)
+		return;
+
+	lwip_listen(sock, BACKLOG);
+
+	size = sizeof(remote);
+
+	while (1) {
+		if ((new_sd = lwip_accept(sock, (struct sockaddr *)&remote, (socklen_t *)&size)) > 0){
+			//inet_ntop(AF_INET, remote, ip, IP_TEXT_SIZE);
+			//xil_printf("Connection accepted from %s\n", ip);
+			xil_printf("New connection accepted.\n", ip);
+			sys_thread_new("server", process_client_request,
+				(void*)new_sd,
+				THREAD_STACKSIZE,
+				DEFAULT_THREAD_PRIO);
+		}
+	}
+}

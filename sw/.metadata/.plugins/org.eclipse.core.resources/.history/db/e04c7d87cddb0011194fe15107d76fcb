@@ -1,0 +1,199 @@
+ /* common.h
+ *
+ *  Created on: Apr 2, 2012
+ *      Author: lucas.russo
+ *
+ */
+
+#ifndef _COMMON_H_
+#define _COMMON_H_
+
+#include "low_level_op.h"
+
+/******************* Debug Macros **********************/
+
+/* Server Debug */
+#define SERVER_DEBUG
+
+#ifdef SERVER_DEBUGG
+#define SERVER_DEBUG
+#endif
+
+/* Low-level debug */
+#define LOW_LEV_DEBUG
+
+/* Platform debug. Initialization board debug */
+//#define INIT_DEBUG
+
+/*******************************************************/
+
+/***************** General definitions *****************/
+#define TWO_EXP_26 67108864
+
+/*******************************************************/
+
+/***************** Address definitions *****************/
+/* FMC150 */
+#define FMC150_BASEADDR XPAR_FMC150_IF_DMA_0_BASEADDR
+
+/* FMC150 ADC DMA */
+#define BPM_ADC_DMA_BASEADDR XPAR_XBPM_ADC_DMA_BASEADDR
+#define BPM_ADC_DMA_DEV_ID XPAR_XBPM_ADC_DMA_DEVICE_ID
+
+/* DDR3 */
+#define DDR3_BASERADDR XPAR_DDR3_SDRAM_S_AXI_BASEADDR
+#define DDR3_HIGHADDR XPAR_DDR3_SDRAM_S_AXI_HIGHADDR
+#define DDR3_SIZE (DDR3_HIGHADDR - DDR3_BASERADDR)
+
+#define DDR3_DMA_DDC_OFFSET 0x100000
+#define DDR3_DMA_DDC_BUFFER (DDR3_BASERADDR + DDR3_DMA_DDC_OFFSET)
+
+/* 9 MB offset in comparison to DDR3_DMA_ADC_BUFFER */
+#define DDR3_DMA_ADC_OFFSET 0x2000000
+#define DDR3_DMA_ADC_BUFFER (DDR3_BASERADDR + DDR3_DMA_ADC_OFFSET)
+
+/* 9 MB offset in comparison to DDR3_DMA_DDC_BUFFER */
+#define DDR3_DMA_ADC_DDC_OFFSET 0x4000000
+#define DDR3_DMA_ADC_DDC_BUFFER (DDR3_BASERADDR + DDR3_DMA_ADC_DDC_OFFSET)
+
+/* LED */
+#define LED_BASEADDR XPAR_LEDS_8BITS_BASEADDR
+
+/* BPM DDC */
+#define BPM_DDC_BASEADDR XPAR_BPM_DDC_0_BASEADDR
+
+/* BPM DDC DMA */
+#define BPM_DDC_DMA_BASEADDR XPAR_XBPM_DDC_DMA_BASEADDR
+#define BPM_DDC_DMA_DEV_ID XPAR_XBPM_DDC_DMA_DEVICE_ID
+
+/*****************************************************/
+
+/***************** Error definitions *****************/
+/* ERROR FLAGS */
+#define SUCCESS 0
+#define ERROR -1
+/* There is data that could not fit into packet. Send current packet and call the function again */
+//#define DOAGAIN -2
+
+/*****************************************************/
+
+/***************** Packet definitions *****************/
+#define RESPONSE_PACKET_HEADER_SIZE 8
+#define RESPONSE_PACKET_BUF_SIZE 4096
+//#define RESPONSE_PACKET_BUF_SIZE MAX_DMA_TRANSFER_SIZE
+#define RESPONSE_PACKET_SIZE (RESPONSE_PACKET_HEADER_SIZE +		\
+		RESPONSE_PACKET_BUF_SIZE)
+#define RESPONSE_PACKET_MAX_ADC_SAMPLES (RESPONSE_PACKET_BUF_SIZE/ADC_SAMPLE_SIZE)
+#define RESPONSE_PACKET_MAX_DDC_SAMPLES (RESPONSE_PACKET_BUF_SIZE/DDC_SAMPLE_SIZE)
+/*#define RESPONSE_PACKET_SIZE RECV_BUF_SIZE
+#define RESPONSE_PACKET_BUF_SIZE (RESPONSE_PACKET_SIZE - 8)*/
+#define COMMAND_PACKET_SIZE 16
+
+/*#define RECV_BUF_SIZE 1024
+#define SEND_BUF_SIZE 2048*/
+#define RECV_BUF_SIZE RESPONSE_PACKET_SIZE
+#define SEND_BUF_SIZE COMMAND_PACKET_SIZE
+
+#define MAX_COMMANDS 14
+#define MAX_RESPONSE_TYPES 7
+
+/*************************************************/
+
+/***************** Structures definitions *****************/
+/* Commands available */
+enum command_types {
+	/* FMC150 Commands */
+	FMC150_ADC_DELAY = 1,
+	FMC150_CAPTURE,
+	FMC150_GET_SAMPLES,
+	FMC150_READ,
+	FMC150_WRITE,
+
+	/* DDC Commands */
+	DDC_CAPTURE,
+	DDC_GET_SAMPLES,
+	DDC_READ,
+	DDC_WRITE,
+
+	/* FMC150 + DDC Commands */
+	DDC_FMC150_CAPTURE,
+	DDC_FMC150_GET_SAMPLES,
+
+	/* General Commands */
+	LED_READ,
+	LED_WRITE,
+	SOFT_REG_READ,
+	SOFT_REG_WRITE,
+
+	QUIT
+};
+
+enum response_types{
+	MESSAGE = 1,
+
+	/* FMC150 Response types */
+	FMC150_REG_VALUE,
+	FMC150_NEW_DATA,
+	FMC150_REMAINING_DATA,
+
+	/* DDC Response types */
+	DDC_NEW_DATA,
+	DDC_REMAINING_DATA,
+
+	/* FMC150 + DDC Response types */
+	FMC150_DDC_NEW_DATA,
+	FMC150_DDC_REMAINING_DATA
+};
+
+/* Application command packet */
+struct command_packet{
+	unsigned int comm;
+	unsigned int cs;
+	unsigned int addr;
+	unsigned int val;
+};
+
+/* Application response packet */
+struct response_packet{
+	unsigned int comm;
+	unsigned int num;		/* valid bytes */
+	//unsigned char buf[RESPONSE_PACKET_BUF_SIZE];
+	unsigned char *buf;
+};
+
+/* Structure for commands attributes */
+struct command_attr{
+	unsigned int max_samples;
+	unsigned int sample_size;
+};
+
+/* Structure for command functions */
+struct command_ops{
+	int (*capture_samples)(u32 qw_count, struct low_level_handler *low_lev_handler);
+	int (*get_samples)(u32 *size, u32 *byte_offset, struct low_level_handler *low_lev_handler);
+	int (*read_reg)(u32 chipselect, u32 addr, volatile u32* value);
+	int (*write_reg)(u32 chipselect, u32 addr, u32 value);
+};
+
+struct command_handler{
+	unsigned int comm;
+	const struct command_attr *comm_attr;
+	const struct command_ops *comm_ops;
+};
+
+struct response_handler{
+	unsigned int new_data_id;
+	unsigned int remaining_data_id;
+	unsigned int byte_offset;
+};
+
+/***************************************************/
+
+/***************** Functions definitions **************/
+/* Helper function to register signals to processes */
+int print_command_packet(struct command_packet *command_packet);
+int print_response_packet(struct response_packet *response_packet);
+
+/***************************************************/
+
+#endif //_COMMON_H_

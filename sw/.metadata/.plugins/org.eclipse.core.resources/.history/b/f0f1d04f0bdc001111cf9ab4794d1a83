@@ -1,0 +1,152 @@
+/*
+ * platform.c
+ *
+ *  Created on: Apr 2, 2012
+ *      Author: lucas.russo
+ *
+ * Extended from Xilinx Reference design
+ *
+ * Copyright (c) 2010 Xilinx, Inc.  All rights reserved.
+ *
+ * Xilinx, Inc.
+ * XILINX IS PROVIDING THIS DESIGN, CODE, OR INFORMATION "AS IS" AS A
+ * COURTESY TO YOU.  BY PROVIDING THIS DESIGN, CODE, OR INFORMATION AS
+ * ONE POSSIBLE   IMPLEMENTATION OF THIS FEATURE, APPLICATION OR
+ * STANDARD, XILINX IS MAKING NO REPRESENTATION THAT THIS IMPLEMENTATION
+ * IS FREE FROM ANY CLAIMS OF INFRINGEMENT, AND YOU ARE RESPONSIBLE
+ * FOR OBTAINING ANY RIGHTS YOU MAY REQUIRE FOR YOUR IMPLEMENTATION.
+ * XILINX EXPRESSLY DISCLAIMS ANY WARRANTY WHATSOEVER WITH RESPECT TO
+ * THE ADEQUACY OF THE IMPLEMENTATION, INCLUDING BUT NOT LIMITED TO
+ * ANY WARRANTIES OR REPRESENTATIONS THAT THIS IMPLEMENTATION IS FREE
+ * FROM CLAIMS OF INFRINGEMENT, IMPLIED WARRANTIES OF MERCHANTABILITY
+ * AND FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ */
+
+#include "xparameters.h"
+#include "xil_cache.h"
+
+#include "platform_config.h"
+#include "platform.h"
+#include "common.h"
+#include "init.h"
+#include <xaxidma.h>
+
+#ifdef STDOUT_IS_16550
+#include "xuartns550_l.h"
+#endif
+
+extern struct low_level_attr ddc_dma_attr;
+extern struct low_level_attr fmc150_adc_dma_attr;
+
+/* Foward declarations */
+int XAxiDma_CfgInitialize(XAxiDma * InstancePtr, XAxiDma_Config *Config);
+int update_fmc150_adc_delay(u8 adc_strobe_delay, u8 adc_cha_delay, u8 adc_chb_delay);
+
+void
+enable_caches()
+{
+#ifdef __PPC__
+    Xil_ICacheEnableRegion(CACHEABLE_REGION_MASK);
+    Xil_DCacheEnableRegion(CACHEABLE_REGION_MASK);
+#elif __MICROBLAZE__
+#ifdef XPAR_MICROBLAZE_USE_ICACHE 
+    Xil_ICacheEnable();
+#endif
+#ifdef XPAR_MICROBLAZE_USE_DCACHE 
+    Xil_DCacheEnable();
+#endif
+#endif
+}
+
+void
+disable_caches()
+{
+    Xil_DCacheDisable();
+    Xil_ICacheDisable();
+}
+
+int
+init_platform()
+{
+    enable_caches();
+
+    /* if we have a uart 16550, then that needs to be initialized */
+#ifdef STDOUT_IS_16550
+    XUartNs550_SetBaud(STDOUT_BASEADDR, XPAR_XUARTNS550_CLOCK_HZ, 9600);
+    XUartNs550_SetLineControlReg(STDOUT_BASEADDR, XUN_LCR_8_DATA_BITS);
+#endif
+
+    /* Get DMA configs */
+    ddc_dma_attr.AxiDmaConfig = XAxiDma_LookupConfig(BPM_DDC_DMA_DEV_ID);
+    fmc150_adc_dma_attr.AxiDmaConfig = XAxiDma_LookupConfig(BPM_ADC_DMA_DEV_ID);
+
+    //  Initialize DMA engine
+    if(XAxiDma_CfgInitialize(&ddc_dma_attr.AxiDma, ddc_dma_attr.AxiDmaConfig) != XST_SUCCESS){
+    	xil_printf("Error initializing BPM DDC DMA\n");
+    	return -1;
+    }
+
+    if(XAxiDma_CfgInitialize(&fmc150_adc_dma_attr.AxiDma, fmc150_adc_dma_attr.AxiDmaConfig) != XST_SUCCESS){
+		xil_printf("Error initializing FMC150 ADC DMA\n");
+		return -1;
+	}
+
+    /* Enable DMA interrupts */
+    /*XAxiDma_IntrEnable(&ddc_dma_attr.AxiDma, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);
+    XAxiDma_IntrEnable(&fmc150_adc_dma_attr.AxiDma, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);
+
+    XAxiDma_Reset(&ddc_dma_attr.AxiDma);
+    XAxiDma_Reset(&fmc150_adc_dma_attr.AxiDma);*/
+
+    /*if(enable_ext_clk() < 0){
+    	xil_printf("Error enabling ext_clk!\n");
+    	return -1;
+    }*/
+
+    /* Init cdce72010 to FMC150 registers */
+    init_cdce72010();
+
+    /* Update delay accordingly to PLL output frequency */
+    //init_fmc150_delay();
+
+	/* Enable low (< 80MSPS)/hi(>80MSPS) speed for the ADS62P49
+	 * depending on cdce72010 register values*/
+    init_ads62p49();
+    //write_fmc150_register(CHIPSELECT_ADS62P49, 0x020, 0x04);
+
+    /* Adjust ADC delay */
+    // For ADC sampling clock = 145.76 MHz
+    //if(update_fmc150_adc_delay(0x00, 0x18, 0x18) < 0){
+    // For ADC sampling clock = 122.88 MHz
+    //update_fmc150_adc_delay(0x00, 0x5, 0x5);
+    init_fmc150_delay();
+
+	if(check_mmcm_lock() < 0){
+		xil_printf("Error trying to lock MMCM\n");
+		return -1;
+	}
+
+	xil_printf("MMCM Locked!\n");
+
+    if(check_ext_lock() < 0){
+		xil_printf("Error trying to lock PLL\n");
+		return -1;
+	}
+
+    xil_printf("cdce72010 PLL Locked!\n");
+
+	//dump_cdce72010_regs();
+
+#ifdef INIT_DEBUG
+	calibrate_adc_delay();
+#endif
+
+    return 0;
+}
+
+void
+cleanup_platform()
+{
+    disable_caches();
+}

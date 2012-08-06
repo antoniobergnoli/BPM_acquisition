@@ -1,0 +1,170 @@
+/*
+ * Copyright (c) 2009 Xilinx, Inc.  All rights reserved.
+ *
+ * Xilinx, Inc.
+ * XILINX IS PROVIDING THIS DESIGN, CODE, OR INFORMATION "AS IS" AS A
+ * COURTESY TO YOU.  BY PROVIDING THIS DESIGN, CODE, OR INFORMATION AS
+ * ONE POSSIBLE   IMPLEMENTATION OF THIS FEATURE, APPLICATION OR
+ * STANDARD, XILINX IS MAKING NO REPRESENTATION THAT THIS IMPLEMENTATION
+ * IS FREE FROM ANY CLAIMS OF INFRINGEMENT, AND YOU ARE RESPONSIBLE
+ * FOR OBTAINING ANY RIGHTS YOU MAY REQUIRE FOR YOUR IMPLEMENTATION.
+ * XILINX EXPRESSLY DISCLAIMS ANY WARRANTY WHATSOEVER WITH RESPECT TO
+ * THE ADEQUACY OF THE IMPLEMENTATION, INCLUDING BUT NOT LIMITED TO
+ * ANY WARRANTIES OR REPRESENTATIONS THAT THIS IMPLEMENTATION IS FREE
+ * FROM CLAIMS OF INFRINGEMENT, IMPLIED WARRANTIES OF MERCHANTABILITY
+ * AND FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ */
+
+/*
+ * helloworld.c: simple test application
+ */
+
+#include <stdio.h>
+#include "xparameters.h"
+#include "platform.h"
+#include "xio.h"
+#include "xil_types.h"
+
+
+#define RETURN_SUCCESS 0
+#define RETURN_ERROR -1
+
+#define OFFSET_FMC150_FLAGS_PULSE_0 0x0
+#define OFFSET_FMC150_FLAGS_IN_0 0x1
+#define OFFSET_FMC150_FLAGS_OUT_0 0x2
+#define OFFSET_FMC150_ADDR 0x3
+#define OFFSET_FMC150_DATAIN 0x4
+#define OFFSET_FMC150_DATAOUT 0x5
+#define OFFSET_FMC150_CHIPSELECT 0x6
+#define OFFSET_FMC150_ADC_DELAY 0x7
+
+#define MASK_AND_FLAGSIN0_SPI_WRITE 0xFFFFFFFE
+#define MASK_OR_FLAGSIN0_SPI_READ 0x1
+
+#define MASK_AND_FLAGSOUT0_SPI_BUSY 0x1
+
+#define MASK_XOR_CHIPSELECT_CDCE72010 0x1
+#define MASK_XOR_CHIPSELECT_ADS62P49 0x2
+#define MASK_XOR_CHIPSELECT_DAC3283 0x4
+#define MASK_XOR_CHIPSELECT_AMC7823 0x8
+
+#define MASK_PULSES_ADC_DELAY_UPDATE 0x1
+
+
+#define FMC150_DMA_BASEADDR XPAR_AXI_DMA_0_BASEADDR
+#define FMA150_BASEADDR XPAR_FMC150_BASEADDR
+#define DDR3_BASERADDR XPAR_DDR3_SDRAM_S_AXI_BASEADDR
+
+/* Max Samples count is limited to 32768 samples = 15 bits (2^15). Since each sample is 32 bit (DWORD),
+ * we have a total of 32768 samples * (2^2 = 4) bytes per sample = 131072 bytes = 128 KB
+ * OBS: It can be bigger as long as we increase the size of slv_reg0 to the max of 131072 samples
+ *  (= 2^17) bits = 131072 * (2^2 = 4) bytes per sample = 524288 bytes = 512 KB = Virtex-6 RAM size.
+ *  OBS2: The DMA engine can transfer up to 8388608 bytes (=8 MB = 2^23 bits in S2MM_LENGTH register) =
+ *  2097152 samples = 2^21 which is far less than the maximum size possible on the 512 MB DDR3 available
+ *  on ML605 kit*/
+#define MAX_SAMPLES_COUNT 2097151
+#define SAMPLES_COUNT 64
+
+#define DEBUG
+
+int update_adc_delay(u8 adc_strobe_delay, u8 adc_cha_delay, u8 adc_chb_delay)
+{
+    u32 aux_value;
+
+    aux_value = (u32)adc_strobe_delay + (((u32)adc_cha_delay) << 8) + (((u32)adc_chb_delay) << 16);
+
+    XIo_Out32(FMA150_BASEADDR+OFFSET_FMC150_ADC_DELAY*0x4, aux_value);
+    XIo_Out32(FMA150_BASEADDR+OFFSET_FMC150_FLAGS_PULSE_0*0x4, 0x1);
+
+    return RETURN_SUCCESS;
+}
+
+void print(char *str);
+
+/* Delay of 100000 clock cycles */
+void delay(){
+	int i;
+	for(i = 0; i < 100000; i++){
+		asm("nop");
+	}
+}
+
+void adc_capture(u32 qw_count, u32 start_address) {
+   if(qw_count > MAX_SAMPLES_COUNT){
+      xil_printf("Trimming qw_count to MAX_SAMPLES_COUNT!\n");
+	  qw_count = MAX_SAMPLES_COUNT;
+	}
+	
+  // initialize the dma engine
+  XIo_Out32((FMC150_DMA_BASEADDR + 0x030), 0); // clear dma operations
+  XIo_Out32((FMC150_DMA_BASEADDR + 0x030), 1); // enable dma operations
+  XIo_Out32((FMC150_DMA_BASEADDR + 0x048), start_address); // capture start address
+  XIo_Out32((FMC150_DMA_BASEADDR + 0x058), (qw_count * 4)); // number of bytes
+
+  // start the adc capture
+  XIo_Out32(FMA150_BASEADDR + 0x20, 0x0);
+  //xil_printf("slv_reg0 = %08X\n", XIo_In32(ACQUISITION_BASEADDR));
+  XIo_Out32(FMA150_BASEADDR + 0x20, (0x00200000 | (qw_count)));
+  //xil_printf("slv_reg0 = %08X\n", XIo_In32(ACQUISITION_BASEADDR));
+
+  /* DMA not completed! Test bit #2 of register @ offset 0x34 (S2MM Status DMA register)*/
+  while(((XIo_In32(FMC150_DMA_BASEADDR + 0x034) & 0x2) >> 1) == 0){
+#ifdef DEBUG
+	  xil_printf("DMA has not completed yet.\n");
+#endif
+	  delay();
+  }
+
+#ifdef DEBUG
+  xil_printf("DMA has completed!\n");
+#endif
+
+  //xil_printf("Antes do return\n");
+  return;
+}
+
+int main()
+{
+	u32 raddr;
+	u32 rdata, rdata_prev;
+	int i, errors = 0;
+
+	/* 256MB offset -> Upper RAM block! */
+	raddr = DDR3_BASERADDR + 0x40000;
+
+    init_platform();
+
+    update_adc_delay(0x00, 0xF, 0xF);
+
+    /* Start Capture */
+    adc_capture(SAMPLES_COUNT, raddr);
+
+    rdata_prev = XIo_In32(raddr);
+#ifdef DEBUG
+    xil_printf("1. Data @%08X: %08X\n", raddr, rdata);
+#endif
+
+    for(i = 1; i < SAMPLES_COUNT; i++){
+        rdata = XIo_In32(raddr + i * 0x4);
+
+#ifdef DEBUG
+        //xil_printf("%d. Data @%08X: %08X\n", i+1, raddr + i * 0x4, rdata);
+        xil_printf("%d\t%d\n", (short)rdata, (short)(rdata >> 16));
+#endif
+
+        if(rdata != rdata_prev + 1){
+        	errors++;
+        }
+        rdata_prev = rdata;
+    }
+
+    if(errors != 0)
+    	xil_printf("Error Detected! Difference between samples is not 1!\n");
+    else
+    	xil_printf("Test Successfully!\n");
+
+    cleanup_platform();
+
+    return 0;
+}

@@ -1,0 +1,124 @@
+Running: C:\Xilinx\13.4\ISE_DS\ISE\bin\nt\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o D:/LR/Xilinx_projects/BPM_HDL_DDC/USER_LOGIC_TB_isim_beh.exe -prj D:/LR/Xilinx_projects/BPM_HDL_DDC/USER_LOGIC_TB_beh.prj work.USER_LOGIC_TB 
+ISim O.87xd (signature 0x2f00eba5)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Parsing VHDL file "D:/LR/Xilinx_projects/BPM_HDL_DDC/utilities_pkg.vhd" into library work
+Parsing VHDL file "D:/LR/Xilinx_projects/BPM_HDL_DDC/mixer.vhd" into library work
+Parsing VHDL file "D:/LR/Xilinx_projects/BPM_HDL_DDC/fixed_point_divider.vhd" into library work
+Parsing VHDL file "D:/LR/Xilinx_projects/BPM_HDL_DDC/dds.vhd" into library work
+Parsing VHDL file "D:/LR/Xilinx_projects/BPM_HDL_DDC/cordic.vhd" into library work
+Parsing VHDL file "D:/LR/Xilinx_projects/BPM_HDL_DDC/cic_decimator.vhd" into library work
+Parsing VHDL file "D:/LR/Xilinx_projects/BPM_HDL_DDC/bpm_ddc_pkg.vhd" into library work
+Parsing VHDL file "D:/LR/Xilinx_projects/BPM_HDL_DDC/arith_dsp48e_pkg.vhd" into library work
+Parsing VHDL file "D:/LR/Xilinx_projects/BPM_HDL_DDC/single_channel_ddc_pipe.vhd" into library work
+Parsing VHDL file "D:/LR/Xilinx_projects/BPM_HDL_DDC/delta_over_sigma.vhd" into library work
+Parsing VHDL file "D:/LR/Xilinx_projects/BPM_HDL_DDC/bpm_ddc_pipe.vhd" into library work
+Parsing VHDL file "D:/LR/Xilinx_projects/BPM_HDL_DDC/user_logic_tb.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 183872 KB
+Fuse CPU Usage: 19375 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package numeric_std
+Compiling package math_real
+Compiling package bpm_ddc_pkg
+Compiling package utilities_pkg
+Compiling package arith_dsp48e_pkg
+Compiling package vcomponents
+Compiling package std_logic_arith
+Compiling package std_logic_signed
+Compiling package textio
+Compiling package bip_utils_pkg_v2_0
+Compiling package xcc_utils_v2_0
+Compiling package pkg_dds_compiler_v5_0
+Compiling package bip_usecase_utils_pkg_v2_0
+Compiling package dds_compiler_v5_0_sim_comps
+Compiling package xbip_pipe_v2_0_xst_comp
+Compiling package axi_utils_pkg_v1_0
+Compiling package global_util_pkg_v1_0
+Compiling package axi_utils_v1_0_comps
+Compiling package xbip_pipe_v2_0_comp
+Compiling architecture behavioral of entity xbip_pipe_v2_0 [\xbip_pipe_v2_0(7,1,0,0,1,0,0,"0...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0_xst [\xbip_pipe_v2_0_xst(7,1,0,0,1,0,...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0 [\xbip_pipe_v2_0(0,1,0,0,0,0,0,"0...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0_xst [\xbip_pipe_v2_0_xst(0,1,0,0,0,0,...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0 [\xbip_pipe_v2_0(1,1,0,0,0,0,0,"0...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0_xst [\xbip_pipe_v2_0_xst(1,1,0,0,0,0,...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0 [\xbip_pipe_v2_0(0,1,0,0,0,0,0,"0...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0_xst [\xbip_pipe_v2_0_xst(0,1,0,0,0,0,...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0 [\xbip_pipe_v2_0(6,1,0,0,0,0,0,"0...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0_xst [\xbip_pipe_v2_0_xst(6,1,0,0,0,0,...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0 [\xbip_pipe_v2_0(7,1,0,0,0,0,0,"0...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0_xst [\xbip_pipe_v2_0_xst(7,1,0,0,0,0,...]
+Compiling architecture behavioral of entity dds_compiler_v5_0_behv [\dds_compiler_v5_0_behv("virtex6...]
+Compiling architecture behavioral of entity dds_compiler_v5_0 [\dds_compiler_v5_0("virtex6",16,...]
+Compiling architecture dds_a of entity dds [dds_default]
+Compiling package mult_gen_pkg_v11_2
+Compiling package std_logic_unsigned
+Compiling architecture behavioral of entity mult_gen_v11_2 [\mult_gen_v11_2(0,0,"virtex6",16...]
+Compiling architecture mixer_a of entity mixer [mixer_default]
+Compiling package std_logic_textio
+Compiling package cic_compiler_v3_0_fir_pkg
+Compiling package cic_compiler_v3_0_pkg
+Compiling package cic_compiler_v3_0_sim_comps
+Compiling package axi_utils_pkg_v1_1
+Compiling package global_util_pkg_v1_1
+Compiling package axi_utils_v1_1_comps
+Compiling architecture xilinx of entity axi_slave_2to1_v1_1 [\axi_slave_2to1_v1_1(24,false,1,...]
+Compiling architecture xilinx of entity glb_srl_fifo_v1_1 [\glb_srl_fifo_v1_1(40,16,true,tr...]
+Compiling architecture xilinx of entity glb_ifx_master_v1_1 [\glb_ifx_master_v1_1(40,16,14,14...]
+Compiling architecture behavioral of entity cic_compiler_v3_0_decimate_bhv [\cic_compiler_v3_0_decimate_bhv(...]
+WARNING:HDLCompiler:746 - "N:/O.87xd/rtf/vhdl/src/XilinxCoreLib/cic_compiler_v3_0_decimate_bhv.vhd" Line 558: Range is empty (null range)
+Compiling architecture behavioral of entity cic_compiler_v3_0 [\cic_compiler_v3_0("cic_decimato...]
+Compiling architecture cic_decimator_a of entity cic_decimator [cic_decimator_default]
+Compiling package mult_gen_pkg_v11_0
+Compiling package cordic_v5_0_pack
+Compiling package cordic_v5_0_comps
+Compiling architecture xilinx of entity axi_slave_2to1_v1_1 [\axi_slave_2to1_v1_1(48,false,1,...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0 [\xbip_pipe_v2_0(27,1,0,0,0,0,0,"...]
+Compiling architecture behavioral of entity xbip_pipe_v2_0_xst [\xbip_pipe_v2_0_xst(27,1,0,0,0,0...]
+Compiling architecture behavioral of entity cordic_v5_0_behv [\cordic_v5_0_behv(2,1,1,0,"virte...]
+Compiling architecture xilinx of entity glb_srl_fifo_v1_1 [\glb_srl_fifo_v1_1(48,32,true,tr...]
+Compiling architecture xilinx of entity glb_ifx_master_v1_1 [\glb_ifx_master_v1_1(48,32,1,1)\]
+Compiling architecture behavioral of entity cordic_v5_0 [\cordic_v5_0(2,1,1,0,"virtex6",0...]
+Compiling architecture cordic_a of entity cordic [cordic_default]
+Compiling architecture rtl of entity single_channel_ddc_pipe [single_channel_ddc_pipe_default]
+Compiling package vital_timing
+Compiling package vital_primitives
+Compiling package vpkg
+Compiling architecture vcc_v of entity VCC [vcc_default]
+Compiling architecture gnd_v of entity GND [gnd_default]
+Compiling architecture fde_v of entity FDE [\FDE('0')\]
+Compiling architecture fdr_v of entity FDR [\FDR('1')\]
+Compiling architecture dsp48e1_v of entity DSP48E1 [\DSP48E1(1,0,0,1,"NO_RESET","DIR...]
+Compiling architecture dsp48e1_v of entity DSP48E1 [\DSP48E1(1,0,1,1,"NO_RESET","CAS...]
+Compiling architecture fd_v of entity FD [\FD('0')\]
+Compiling architecture xorcy_v of entity XORCY [xorcy_default]
+Compiling architecture muxcy_v of entity MUXCY [muxcy_default]
+Compiling architecture muxf7_v of entity MUXF7 [muxf7_default]
+Compiling architecture lut2_v of entity LUT2 [\LUT2("0100")(0,3)\]
+Compiling architecture lut3_v of entity LUT3 [\LUT3("00001000")(0,7)\]
+Compiling architecture lut6_v of entity LUT6 [\LUT6("0000000000000000011100000...]
+Compiling architecture lut4_v of entity LUT4 [\LUT4("0101010101011001")(0,15)\]
+Compiling architecture lut5_v of entity LUT5 [\LUT5("0011001100110011001100110...]
+Compiling architecture lut1_v of entity LUT1 [\LUT1("0010")(0,3)\]
+Compiling architecture inv_v of entity INV [inv_default]
+Compiling architecture aramb36_internal_v of entity ARAMB36_INTERNAL [\ARAMB36_INTERNAL:user_logic_tb:...]
+Compiling architecture ramb16_v of entity RAMB16 [\RAMB16:user_logic_tb:cmp_bpm_dd...]
+Compiling architecture srlc16e_v of entity SRLC16E [\SRLC16E("0000000000000000")(0,1...]
+Compiling architecture srlc32e_v of entity SRLC32E [\SRLC32E("0000000000000000000000...]
+Compiling architecture dsp48e_v of entity DSP48E [\DSP48E("SAFE",1,1,1,false,"MATC...]
+Compiling architecture dsp48e_v of entity DSP48E [\DSP48E("SAFE",1,1,1,false,"MATC...]
+Compiling architecture fds_v of entity FDS [\FDS('1')\]
+Compiling architecture structure of entity fixed_point_divider [\fixed_point_divider:user_logic_...]
+Compiling architecture rtl of entity delta_over_sigma [\delta_over_sigma:user_logic_tb:...]
+Compiling architecture rtl of entity bpm_ddc_pipe [\bpm_ddc_pipe:user_logic_tb:cmp_...]
+Compiling architecture tb of entity user_logic_tb
+Time Resolution for simulation is 1ps.
+Waiting for 6 sub-compilation(s) to finish...
+Compiled 255 VHDL Units
+Built simulation executable D:/LR/Xilinx_projects/BPM_HDL_DDC/USER_LOGIC_TB_isim_beh.exe
+Fuse Memory Usage: 288556 KB
+Fuse CPU Usage: 25209 ms

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="bootloop" key="ML605_System_fmc150_testbench11_ADC_DDC_DMA_hw_plataform-microblaze_0-initElf"/>
+	<item value="C:\Users\lucas.russo\workspace\ML605_System_fmc150_testbench11_ADC_DDC_DMA_sw\ML605_System_fmc150_testbench10_ADC_DMA_hw_plataform\system.bit" key="ML605_System_fmc150_testbench10_ADC_DMA_hw_plataform-bitFile"/>
+	<item value="C:\Users\lucas.russo\workspace\ML605_System_fmc150_testbench11_ADC_DDC_DMA_sw\ML605_System_fmc150_testbench10_ADC_DMA_hw_plataform\system_bd.bmm" key="ML605_System_fmc150_testbench10_ADC_DMA_hw_plataform-bmmFile"/>
+	<item value="bootloop" key="ML605_System_fmc150_testbench4_DMA_hw_platform-microblaze_0-initElf"/>
+	<item value="C:\Users\lucas.russo\workspace\ML605_System_fmc150_testbench4_LWIP_BPM_DDC_DMA_sw\ML605_System_fmc150_testbench4_DMA_hw_platform\system_bd.bmm" key="ML605_System_fmc150_testbench4_DMA_hw_platform-bmmFile"/>
+	<item value="C:\Users\lucas.russo\workspace\ML605_System_fmc150_testbench4_LWIP_BPM_DDC_DMA_sw\ML605_System_fmc150_testbench4_DMA_hw_platform\system.bit" key="ML605_System_fmc150_testbench4_DMA_hw_platform-bitFile"/>
+	<item value="C:\Users\lucas.russo\workspace\ML605_System_fmc150_testbench13_ADC_DDC_DMA_sw\ML605_System_fmc150_testbench11_ADC_DDC_DMA_hw_plataform\system_bd.bmm" key="ML605_System_fmc150_testbench11_ADC_DDC_DMA_hw_plataform-bmmFile"/>
+	<item value="bootloop" key="ML605_System_fmc150_testbench10_ADC_DMA_hw_plataform-microblaze_0-initElf"/>
+	<item value="C:\Users\lucas.russo\workspace\ML605_System_fmc150_testbench13_ADC_DDC_DMA_sw\ML605_System_fmc150_testbench11_ADC_DDC_DMA_hw_plataform\system.bit" key="ML605_System_fmc150_testbench11_ADC_DDC_DMA_hw_plataform-bitFile"/>
+</section>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<generated_project xmlns="http://www.xilinx.com/XMLSchema" xmlns:xil_pn="http://www.xilinx.com/XMLSchema">
+
+  <!--                                                          -->
+
+  <!--             For tool use only. Do not edit.              -->
+
+  <!--                                                          -->
+
+  <!-- ProjectNavigator created generated project file.         -->
+
+  <!-- For use in tracking generated file and other information -->
+
+  <!-- allowing preservation of process status.                 -->
+
+  <!--                                                          -->
+
+  <!-- Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved. -->
+
+  <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
+
+  <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="BPM_HDL_DDC.xise"/>
+
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="USER_LOGIC_TB_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="USER_LOGIC_TB_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="USER_LOGIC_TB_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="USER_LOGIC_TB_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="bpm_ddc.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="bpm_ddc.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="bpm_ddc.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="bpm_ddc.ngr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="bpm_ddc.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="bpm_ddc.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="bpm_ddc.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="bpm_ddc.xst"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="bpm_ddc_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="bpm_ddc_pipe_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="bpm_ddc_summary.html"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="bpm_ddc_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="cic_decimator.sym" xil_pn:origination="imported"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="cic_decimator_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="dds.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="dds.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="dds.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="dds_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="fixed_point_divider_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
+    <file xil_pn:fileType="FILE_ASY" xil_pn:name="ipcore_dir/cic_decimator.asy" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="ipcore_dir/cic_decimator.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="ipcore_dir/coregen.log"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="single_channel_ddc_pipe_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="single_channel_ddc_pipe_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
+  </files>
+
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1337864571" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1337864570">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1337868725" xil_pn:in_ck="-8172414458999558707" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1337868725">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="arith_dsp48e_pkg.vhd"/>
+      <outfile xil_pn:name="bpm_ddc_pipe.vhd"/>
+      <outfile xil_pn:name="bpm_ddc_pkg.vhd"/>
+      <outfile xil_pn:name="cic_decimator.vhd"/>
+      <outfile xil_pn:name="cordic.vhd"/>
+      <outfile xil_pn:name="dds.vhd"/>
+      <outfile xil_pn:name="delta_over_sigma.vhd"/>
+      <outfile xil_pn:name="fixed_point_divider.vhd"/>
+      <outfile xil_pn:name="mixer.vhd"/>
+      <outfile xil_pn:name="single_channel_ddc_pipe.vhd"/>
+      <outfile xil_pn:name="user_logic_tb.vhd"/>
+      <outfile xil_pn:name="utilities_pkg.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1337868302" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="5371824135603992573" xil_pn:start_ts="1337868302">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1337868302" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="8831425175142826445" xil_pn:start_ts="1337868302">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1338222220" xil_pn:in_ck="-2700054284318470436" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-2604538137406702997" xil_pn:start_ts="1338222219">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="ipcore_dir/cic_decimator.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/cic_decimator.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/cordic.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/cordic.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/dds.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/dds.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/fixed_point_divider.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/fixed_point_divider.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/mixer.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/mixer.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1338222220" xil_pn:in_ck="-2136065541024127167" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1338222220">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="arith_dsp48e_pkg.vhd"/>
+      <outfile xil_pn:name="bpm_ddc_pipe.vhd"/>
+      <outfile xil_pn:name="bpm_ddc_pkg.vhd"/>
+      <outfile xil_pn:name="cic_decimator.vhd"/>
+      <outfile xil_pn:name="cordic.vhd"/>
+      <outfile xil_pn:name="dds.vhd"/>
+      <outfile xil_pn:name="delta_over_sigma.vhd"/>
+      <outfile xil_pn:name="fixed_point_divider.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/cic_decimator.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/cordic.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/dds.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/fixed_point_divider.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/mixer.vhd"/>
+      <outfile xil_pn:name="mixer.vhd"/>
+      <outfile xil_pn:name="single_channel_ddc_pipe.vhd"/>
+      <outfile xil_pn:name="user_logic_tb.vhd"/>
+      <outfile xil_pn:name="utilities_pkg.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1338222267" xil_pn:in_ck="-2136065541024127167" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-6926422382694059011" xil_pn:start_ts="1338222220">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
+      <outfile xil_pn:name="USER_LOGIC_TB_beh.prj"/>
+      <outfile xil_pn:name="USER_LOGIC_TB_isim_beh.exe"/>
+      <outfile xil_pn:name="fuse.log"/>
+      <outfile xil_pn:name="isim.log"/>
+      <outfile xil_pn:name="xilinxsim.ini"/>
+    </transform>
+    <transform xil_pn:end_ts="1338222267" xil_pn:in_ck="-8199857491583881475" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="2400454543486566890" xil_pn:start_ts="1338222267">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="USER_LOGIC_TB_isim_beh.wdb"/>
+      <outfile xil_pn:name="isim.cmd"/>
+      <outfile xil_pn:name="isim.log"/>
+    </transform>
+    <transform xil_pn:end_ts="1336586920" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1336586920">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1336586920" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-2035547503929720559" xil_pn:start_ts="1336586920">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+    </transform>
+    <transform xil_pn:end_ts="1336586920" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-451599434829330338" xil_pn:start_ts="1336586920">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
+    </transform>
+    <transform xil_pn:end_ts="1336586920" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1336586920">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1336586920" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="-341083097324056895" xil_pn:start_ts="1336586920">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+    </transform>
+    <transform xil_pn:end_ts="1336586920" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="15701343915878886" xil_pn:start_ts="1336586920">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+    </transform>
+    <transform xil_pn:end_ts="1336586920" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="8772603808383292968" xil_pn:start_ts="1336586920">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+    </transform>
+    <transform xil_pn:end_ts="1336586930" xil_pn:in_ck="1121270615282528697" xil_pn:name="TRANEXT_xstsynthesize_virtex6" xil_pn:prop_ck="-8980333567454620290" xil_pn:start_ts="1336586920">
+      <status xil_pn:value="AbortedRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
+    </transform>
+  </transforms>
+
+</generated_project>
