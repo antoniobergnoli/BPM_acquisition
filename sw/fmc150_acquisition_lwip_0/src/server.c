@@ -41,7 +41,7 @@
 
 u16_t port = 8006;
 /* buffer to hold the acquired samples */
-extern u32 dma_buf[MAX_DMA_TRANSFER_SIZE/4];
+//extern u32 dma_buf[MAX_DMA_TRANSFER_SIZE/4];
 
 #define IP_TEXT_SIZE 20
 
@@ -255,7 +255,7 @@ int handle_request(struct command_packet *command_packet_r, struct response_pack
 
 			//memcpy(response_packet_s->buf, ((char *)(dma_buf/*low_lev_handler->attr->mem_start_addr*/) + res_handler.byte_offset), val*comm_handler.comm_attr->sample_size );
 			//xil_printf("Dma buf + offset = %08X\n", ((unsigned char *)(dma_buf/*low_lev_handler->attr->mem_start_addr*/) + res_handler.byte_offset));
-			response_packet_s->buf = ((unsigned char *)(dma_buf/*low_lev_handler->attr->mem_start_addr*/) + res_handler.byte_offset);
+			response_packet_s->buf = ((unsigned char *)(/*dma_buf*/low_lev_handler->attr->mem_start_addr) + res_handler.byte_offset);
 			//xil_printf("Response buf = %08X\n", response_packet_s->buf);
 			/* Check if this is a new transaction or the remaining of an old one */
 			response_packet_s->comm = (res_handler.byte_offset == 0) ? res_handler.new_data_id : res_handler.remaining_data_id;
@@ -391,7 +391,7 @@ void process_client_request(void *p)
 #endif
 
 #ifdef SERVER_DEBUGG
-			//print_response_packet(&response_packet_s);
+			print_response_packet(&response_packet_s);
 #endif
 
 			/* Send packet over socket the socket interface */

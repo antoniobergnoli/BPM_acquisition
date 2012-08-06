@@ -62,7 +62,8 @@ u32 cdce72010_reg[CDCE72010_NUMREG] = {
 // DDS = 3.072MHz -> Phase increment = 2048d
 	0x682C0290,
 	0x68840041,
-	0x83860002,
+	0x83860002, 	//divide by 5
+	//0x83840002,		//divide by 4
 	0x68400003,
 	0xE9800004,
 	0x68000005,

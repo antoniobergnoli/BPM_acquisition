@@ -10,7 +10,8 @@
 #include "xparameters.h"
 
 /* align the buffer to 16-byte boundary. DMA engine requires this for DDC samples */
-u32 dma_buf[MAX_DMA_TRANSFER_SIZE/4] __attribute__((aligned(16)));
+/* There is an error associated to this construct. Data corruption! */
+//u32 dma_buf[MAX_DMA_TRANSFER_SIZE/4] __attribute__((aligned(16)));
 
 /***************** Structures for controlling devices *****************/
 /* DMA control structutes */
@@ -188,7 +189,7 @@ int capture_samples(u32 qw_count, struct low_level_handler *low_lev_handler) {
 
    /* Note the fact that each sample is SAMPLE_SIZE*8-bit (SAMPLE_SIZE bytes) large. Therefore we have (qw_count * SAMPLE_SIZE) bytes */
 	//xil_printf("mem start_addr = %08X\n", low_lev_handler->attr->mem_start_addr);
-  if((error = XAxiDma_SimpleTransfer(&low_lev_handler->attr->AxiDma, (u32 *)dma_buf/*(low_lev_handler->attr->mem_start_addr)*/, qw_count*(low_lev_handler->attr->sample_size), XAXIDMA_DEVICE_TO_DMA)) != XST_SUCCESS){
+  if((error = XAxiDma_SimpleTransfer(&low_lev_handler->attr->AxiDma, (u32 *)/*dma_buf*/(low_lev_handler->attr->mem_start_addr), qw_count*(low_lev_handler->attr->sample_size), XAXIDMA_DEVICE_TO_DMA)) != XST_SUCCESS){
 	  xil_printf("Error transferring data to buffer! Error: %s\n", (error == XST_FAILURE) ? "XST_FAILURE" : "XST_INVALID_PARAM");
 	  return ERROR;
   }
@@ -338,12 +339,22 @@ int write_fmc150_register(u32 chipselect, u32 addr, u32 value)
 
 int read_soft_register(u32 chipselect, u32 addr, volatile u32 *value)
 {
+#ifdef LOW_LEV_DEBUG
+	xil_printf("read_soft_register: addr = %08X\n", addr);
+#endif
 	*value = XIo_In32(addr);
+#ifdef LOW_LEV_DEBUG
+	xil_printf("read_soft_register: value read = %08X\n", *value);
+#endif
 	return SUCCESS;
 }
 
 int write_soft_register(u32 chipselect, u32 addr, u32 value)
 {
+#ifdef LOW_LEV_DEBUG
+	xil_printf("write_soft_register: addr = %08X\n", addr);
+	xil_printf("write_soft_register: value to be written = %08X\n", value);
+#endif
 	XIo_Out32(addr, value);
 	return SUCCESS;
 }

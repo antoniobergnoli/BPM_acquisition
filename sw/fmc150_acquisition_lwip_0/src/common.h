@@ -13,7 +13,7 @@
 /******************* Debug Macros **********************/
 
 /* Server Debug */
-//#define SERVER_DEBUGG
+//#define SERVER_DEBUG
 
 #ifdef SERVER_DEBUGG
 #define SERVER_DEBUG
