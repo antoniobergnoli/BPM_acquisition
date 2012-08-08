@@ -1,0 +1,3 @@
+1 - Script bpm_adc_ddc_write_soft_reg is behaving awkwardly.
+		It can halt the FPGA server for some unknown reason.
+		Avoid its usage for now.
