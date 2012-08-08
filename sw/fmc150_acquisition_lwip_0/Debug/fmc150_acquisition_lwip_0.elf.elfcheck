@@ -3,8 +3,8 @@ Xilinx EDK 13.4 Build EDK_O.87xd
 Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
 Command Line: elfcheck -hw
-../../ML605_System_fmc150_testbench11_ADC_DDC_DMA_hw_plataform/system.xml -pe
-microblaze_0 fmc150_acquisition_lwip_0.elf 
+../../ML605_System_fmc150_testbench_hw_plataform/system.xml -pe microblaze_0
+fmc150_acquisition_lwip_0.elf 
 
 ELF file	: fmc150_acquisition_lwip_0.elf
 elfcheck passed.

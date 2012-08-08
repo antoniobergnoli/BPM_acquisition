@@ -83,12 +83,12 @@ init_platform()
 
     //  Initialize DMA engine
     if(XAxiDma_CfgInitialize(&ddc_dma_attr.AxiDma, ddc_dma_attr.AxiDmaConfig) != XST_SUCCESS){
-    	xil_printf("Error initializing BPM DDC DMA\n");
+    	xil_printf("init_platform: Error initializing BPM DDC DMA\n");
     	return -1;
     }
 
     if(XAxiDma_CfgInitialize(&fmc150_adc_dma_attr.AxiDma, fmc150_adc_dma_attr.AxiDmaConfig) != XST_SUCCESS){
-		xil_printf("Error initializing FMC150 ADC DMA\n");
+		xil_printf("init_platform: Error initializing FMC150 ADC DMA\n");
 		return -1;
 	}
 
@@ -123,18 +123,18 @@ init_platform()
     init_fmc150_delay();
 
 	if(check_mmcm_lock() < 0){
-		xil_printf("Error trying to lock MMCM\n");
+		xil_printf("init_platform: Error trying to lock MMCM\n");
 		return -1;
 	}
 
-	xil_printf("MMCM Locked!\n");
+	xil_printf("init_platform: MMCM Locked!\n");
 
     if(check_ext_lock() < 0){
-		xil_printf("Error trying to lock PLL\n");
+		xil_printf("init_platform: Error trying to lock PLL\n");
 		return -1;
 	}
 
-    xil_printf("cdce72010 PLL Locked!\n");
+    xil_printf("init_platform: cdce72010 PLL Locked!\n");
 
 	//dump_cdce72010_regs();
 

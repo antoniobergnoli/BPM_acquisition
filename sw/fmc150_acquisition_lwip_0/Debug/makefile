@@ -51,7 +51,7 @@ fmc150_acquisition_lwip_0.elf.size: fmc150_acquisition_lwip_0.elf
 
 fmc150_acquisition_lwip_0.elf.elfcheck: fmc150_acquisition_lwip_0.elf
 	@echo Invoking: Xilinx ELF Check
-	elfcheck fmc150_acquisition_lwip_0.elf -hw ../../ML605_System_fmc150_testbench11_ADC_DDC_DMA_hw_plataform/system.xml -pe microblaze_0  |tee "fmc150_acquisition_lwip_0.elf.elfcheck"
+	elfcheck fmc150_acquisition_lwip_0.elf -hw ../../ML605_System_fmc150_testbench_hw_plataform/system.xml -pe microblaze_0  |tee "fmc150_acquisition_lwip_0.elf.elfcheck"
 	@echo Finished building: $@
 	@echo ' '
 

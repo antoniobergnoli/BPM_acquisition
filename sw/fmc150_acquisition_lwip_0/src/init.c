@@ -279,7 +279,7 @@ int init_fmc150_delay()
 		return ERROR;
 	}
 
-	xil_printf("init_fmc150_delay: \nChannel A delay updated to 0x%02X\nChannel B delay updated to 0x%02X\n",
+	xil_printf("init_fmc150_delay: Channel A delay updated to 0x%02X\ninit_fmc150_delay: Channel B delay updated to 0x%02X\n",
 			adc_cha_delay, adc_chb_delay);
 
 	return SUCCESS;
@@ -293,16 +293,22 @@ int check_ext_lock()
 	for(i = 0; i < MAX_PLL_LOCK_TRIES; i++){
 		delay(10);
 		while(read_fmc150_register(CHIPSELECT_CDCE72010, 0xC, &value) < 0){
-			xil_printf("cdce72010 SPI busy\n");
+#ifdef INIT_DEBUG
+			xil_printf("check_ext_lock: cdce72010 SPI busy\n");
+#endif
 			delay(100);
 		}
-		xil_printf("cdce72010 reg 0xC: %08X\n", value);
+#ifdef INIT_DEBUG
+		xil_printf("check_ext_lock: cdce72010 reg 0xC: %08X\n", value);
+#endif
 
 		if((value & CDCE72010_PLL_LOCK)){
 			return SUCCESS;
 		}
 
-		xil_printf("cdce72010 PLL NOT locked\n");
+#ifdef INIT_DEBUG
+		xil_printf("check_ext_lock: cdce72010 PLL NOT locked\n");
+#endif
 		delay(1000);
 	}
 
@@ -313,13 +319,17 @@ int check_mmcm_lock()
 {
 	int i;
 
-	for(i = 0; i < MAX_MMCM_LOCK_TRIES /*&& mmcm_clock_lock == 0*/; i++){
-		xil_printf("fmc150_flags_out: %08X\n", XIo_In32(FMC150_BASEADDR + OFFSET_FMC150_FLAGS_OUT_0*0x4));
+	for(i = 0; i < MAX_MMCM_LOCK_TRIES; i++){
+#ifdef INIT_DEBUG
+		xil_printf("check_mmcm_lock: fmc150_flags_out: %08X\n", XIo_In32(FMC150_BASEADDR + OFFSET_FMC150_FLAGS_OUT_0*0x4));
+#endif
 		if((XIo_In32(FMC150_BASEADDR + OFFSET_FMC150_FLAGS_OUT_0*0x4) &
 				MASK_AND_FLAGS_OUT_0_FPGA_ADC_CLK_LOCKED)){
 			return SUCCESS;
 		}
-		xil_printf("MMCM NOT locked\n");
+#ifdef INIT_DEBUG
+		xil_printf("check_mmcm_lock: MMCM NOT locked\n");
+#endif
 		delay(100);
 	}
 
@@ -369,6 +379,7 @@ int dump_mem_adc(void *mem_start_addr, int mem_size)
 {
 	int i;
 
+	xil_printf("dump_mem_adc\n");
 	xil_printf("------------------------\nmem start addr = %08X, mem size = %08X\n", mem_start_addr, mem_size);
 
 	for(i = 0; i < mem_size/ADC_SAMPLE_SIZE; ++i){

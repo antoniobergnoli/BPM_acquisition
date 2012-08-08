@@ -170,6 +170,12 @@ int capture_samples(u32 qw_count, struct low_level_handler *low_lev_handler) {
 	/* Workaround. Try to fix this ASAP */
 	u32 qw_count_fix = (low_lev_handler->id == ADC_ID) ? qw_count : qw_count-1;
 
+	/* Clear status registers before proceeding. Just a test!!! FIXME */
+	if(low_lev_handler->id == ADC_ID)
+		write_soft_register(0x0, FMC150_BASEADDR + FMC150_STATUS_REG_OFFSET, 0);
+	else if(low_lev_handler->id == DDC_ID)
+		write_soft_register(0x0, BPM_DDC_BASEADDR + BPM_DDC_STATUS_REG_OFFSET, 0);
+
 #ifdef LOW_LEV_DEBUG
 	xil_printf("capture_samples: samples_count_pos = %d\n", low_lev_handler->samples_count_pos);
 	xil_printf("capture_samples: samples_count = %d\n", low_lev_handler->samples_count);

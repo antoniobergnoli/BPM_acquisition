@@ -91,7 +91,7 @@ void network_thread(void *p)
 
     /* print out IP settings of the board */
     print("\r\n\r\n");
-    print("-----lwIP Socket Mode Demo Application ------\r\n");
+    print("-----BPM Server Application ------\r\n\n");
     print_ip_settings(&ipaddr, &netmask, &gw);
 
     /* print all application headers */

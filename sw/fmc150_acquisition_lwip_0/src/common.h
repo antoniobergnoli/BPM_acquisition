@@ -33,38 +33,42 @@
 /*******************************************************/
 
 /***************** Address definitions *****************/
-/* FMC150 */
+/* FMC150 address */
 #define FMC150_BASEADDR XPAR_FMC150_IF_DMA_0_BASEADDR
+/* FMC150 status register address offset */
+#define FMC150_STATUS_REG_OFFSET (9*0x4)
 
-/* BPM ADC DMA */
+/* FMC150 ADC DMA address*/
 #define BPM_ADC_DMA_BASEADDR XPAR_XBPM_ADC_DMA_BASEADDR
 #define BPM_ADC_DMA_DEV_ID XPAR_XBPM_ADC_DMA_DEVICE_ID
+
+/* BPM DDC address*/
+#define BPM_DDC_BASEADDR XPAR_BPM_DDC_0_BASEADDR
+/* FMC150 status register address offset */
+#define BPM_DDC_STATUS_REG_OFFSET (1*0x4)
+
+/* BPM DDC DMA address*/
+#define BPM_DDC_DMA_BASEADDR XPAR_XBPM_DDC_DMA_BASEADDR
+#define BPM_DDC_DMA_DEV_ID XPAR_XBPM_DDC_DMA_DEVICE_ID
 
 /* DDR3 */
 #define DDR3_BASERADDR XPAR_DDR3_SDRAM_S_AXI_BASEADDR
 #define DDR3_HIGHADDR XPAR_DDR3_SDRAM_S_AXI_HIGHADDR
 #define DDR3_SIZE (DDR3_HIGHADDR - DDR3_BASERADDR)
 
-#define DDR3_DMA_DDC_OFFSET 0x100000
-#define DDR3_DMA_DDC_BUFFER (DDR3_BASERADDR + DDR3_DMA_DDC_OFFSET)
-
-/* 9 MB offset in comparison to DDR3_DMA_ADC_BUFFER */
-#define DDR3_DMA_ADC_OFFSET 0x2000000
+#define DDR3_DMA_ADC_OFFSET 0x1000000
 #define DDR3_DMA_ADC_BUFFER (DDR3_BASERADDR + DDR3_DMA_ADC_OFFSET)
 
-/* 9 MB offset in comparison to DDR3_DMA_DDC_BUFFER */
-#define DDR3_DMA_ADC_DDC_OFFSET 0x4000000
+/* aprox. 16 MB offset in comparison to DDR3_DMA_ADC_BUFFER */
+#define DDR3_DMA_DDC_OFFSET 0x2000000
+#define DDR3_DMA_DDC_BUFFER (DDR3_BASERADDR + DDR3_DMA_DDC_OFFSET)
+
+/* aprox. 16 MB offset in comparison to DDR3_DMA_DDC_BUFFER */
+#define DDR3_DMA_ADC_DDC_OFFSET 0x3000000
 #define DDR3_DMA_ADC_DDC_BUFFER (DDR3_BASERADDR + DDR3_DMA_ADC_DDC_OFFSET)
 
 /* LED */
 #define LED_BASEADDR XPAR_LEDS_8BITS_BASEADDR
-
-/* BPM DDC */
-#define BPM_DDC_BASEADDR XPAR_BPM_DDC_0_BASEADDR
-
-/* BPM DDC DMA */
-#define BPM_DDC_DMA_BASEADDR XPAR_XBPM_DDC_DMA_BASEADDR
-#define BPM_DDC_DMA_DEV_ID XPAR_XBPM_DDC_DMA_DEVICE_ID
 
 /*****************************************************/
 
@@ -95,8 +99,8 @@
 #define RECV_BUF_SIZE RESPONSE_PACKET_SIZE
 #define SEND_BUF_SIZE COMMAND_PACKET_SIZE
 
-#define MAX_COMMANDS 14
-#define MAX_RESPONSE_TYPES 7
+#define MAX_COMMANDS 16
+#define MAX_RESPONSE_TYPES 10
 
 /*************************************************/
 

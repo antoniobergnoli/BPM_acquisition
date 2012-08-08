@@ -3,7 +3,7 @@
 	<name>fmc150_acquisition_lwip_bsp_0</name>
 	<comment></comment>
 	<projects>
-		<project>ML605_System_fmc150_testbench11_ADC_DDC_DMA_hw_plataform</project>
+		<project>ML605_System_fmc150_testbench_hw_plataform</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

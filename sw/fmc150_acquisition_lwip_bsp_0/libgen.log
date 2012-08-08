@@ -3,18 +3,18 @@ Release 13.4 - libgen Xilinx EDK 13.4 Build EDK_O.87xd
 Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
 Command Line: libgen -hw
-../ML605_System_fmc150_testbench11_ADC_DDC_DMA_hw_plataform/system.xml -pe
-microblaze_0 -log libgen.log system.mss 
+../ML605_System_fmc150_testbench_hw_plataform/system.xml -pe microblaze_0 -log
+libgen.log system.mss 
 
 INFO:EDK:2499 - The following PARAMETERs of os xilkernel are ignored as their
    category selection PARAMETER config_debug_support has a default value "false"
 WARNING:EDK:473 -
    C:\Users\lucas.russo\workspace\ML605_System_fmc150_testbench13_ADC_DDC_DMA_sw
-   \fmc150_acquisition_lwip_bsp_0\system.mss line 18 - Ignoring PARAMETER
+   _FROZEN\fmc150_acquisition_lwip_bsp_0\system.mss line 18 - Ignoring PARAMETER
    VERBOSE  ...
 WARNING:EDK:473 -
    C:\Users\lucas.russo\workspace\ML605_System_fmc150_testbench13_ADC_DDC_DMA_sw
-   \fmc150_acquisition_lwip_bsp_0\system.mss line 19 - Ignoring PARAMETER
+   _FROZEN\fmc150_acquisition_lwip_bsp_0\system.mss line 19 - Ignoring PARAMETER
    DEBUG_MON  ...
 WARNING:EDK - INFO:Security:71 - If a license for part 'xc6vlx240t' is
    available, it will be possible to use 'SDK_TDP' instead of 'SDK'.

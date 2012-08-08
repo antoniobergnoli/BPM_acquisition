@@ -231,23 +231,26 @@ while( total_bytes_received < total_bytes_to_receive )
         % Odd indexes(1,3,5,...)   |     Even Indexes(2,4,6,...)
         % Channel A                |     Channel B
 		% Conversion from fixed point FIX26_24 to decimal (double)
-        if which == 1           % ADC
-            for i = 1:(valid_bytes/SAMPLE_SIZE)
-                adc_a(i+(total_bytes_received/SAMPLE_SIZE)) = typecast(msg_data_in((i-1)*SAMPLE_SIZE+3:(i-1)*SAMPLE_SIZE+4), 'int16');
-                adc_b(i+(total_bytes_received/SAMPLE_SIZE)) = typecast(msg_data_in((i-1)*SAMPLE_SIZE+1:(i-1)*SAMPLE_SIZE+2), 'int16');
+        if msg_type ~= 1 
+            switch(which)
+                case 1              % ADC
+                    for i = 1:(valid_bytes/SAMPLE_SIZE)
+                        adc_a(i+(total_bytes_received/SAMPLE_SIZE)) = typecast(msg_data_in((i-1)*SAMPLE_SIZE+3:(i-1)*SAMPLE_SIZE+4), 'int16');
+                        adc_b(i+(total_bytes_received/SAMPLE_SIZE)) = typecast(msg_data_in((i-1)*SAMPLE_SIZE+1:(i-1)*SAMPLE_SIZE+2), 'int16');
+                    end
+                case 2              % DDC
+                    for i = 1:(valid_bytes/SAMPLE_SIZE)
+                        sum(i+(total_bytes_received/SAMPLE_SIZE)) = (typecast(msg_data_in((i-1)*SAMPLE_SIZE+13:(i-1)*SAMPLE_SIZE+16), 'int32'));
+                        pos_x_temp(i+(total_bytes_received/SAMPLE_SIZE)) = single(typecast(msg_data_in((i-1)*SAMPLE_SIZE+9:(i-1)*SAMPLE_SIZE+12), 'int32'))/TWO_EXP_26;
+                        pos_y_temp(i+(total_bytes_received/SAMPLE_SIZE)) = single(typecast(msg_data_in((i-1)*SAMPLE_SIZE+5:(i-1)*SAMPLE_SIZE+8), 'int32'))/TWO_EXP_26;
+                        pos_z_temp(i+(total_bytes_received/SAMPLE_SIZE)) = single(typecast(msg_data_in((i-1)*SAMPLE_SIZE+1:(i-1)*SAMPLE_SIZE+4), 'int32'))/TWO_EXP_26;
+                    end                
+                    
+                    % Account for BPM sensitivity
+                    pos_x = KX.*pos_x_temp;
+                    pos_y = KY.*pos_y_temp;
+                    pos_z = KZ.*pos_z_temp; 
             end
-        elseif which == 2       % DDC
-            for i = 1:(valid_bytes/SAMPLE_SIZE)
-                sum(i+(total_bytes_received/SAMPLE_SIZE)) = (typecast(msg_data_in((i-1)*SAMPLE_SIZE+13:(i-1)*SAMPLE_SIZE+16), 'int32'));
-                pos_x_temp(i+(total_bytes_received/SAMPLE_SIZE)) = single(typecast(msg_data_in((i-1)*SAMPLE_SIZE+9:(i-1)*SAMPLE_SIZE+12), 'int32'))/TWO_EXP_26;
-                pos_y_temp(i+(total_bytes_received/SAMPLE_SIZE)) = single(typecast(msg_data_in((i-1)*SAMPLE_SIZE+5:(i-1)*SAMPLE_SIZE+8), 'int32'))/TWO_EXP_26;
-                pos_z_temp(i+(total_bytes_received/SAMPLE_SIZE)) = single(typecast(msg_data_in((i-1)*SAMPLE_SIZE+1:(i-1)*SAMPLE_SIZE+4), 'int32'))/TWO_EXP_26;
-            end   
-            
-            % Account for BPM sensitivity
-            pos_x = KX.*pos_x_temp;
-            pos_y = KY.*pos_y_temp;
-            pos_z = KZ.*pos_z_temp; 
         end
 
         total_bytes_received = total_bytes_received + valid_bytes;
@@ -258,7 +261,7 @@ while( total_bytes_received < total_bytes_to_receive )
 
         % Print error or verbose messages
         if (msg_type == 1)
-            fprintf('BPM acquisition error: %s\n', char(msg_data_in(1:end)));
+            fprintf('BPM acquisition error: %s\n', char(msg_data_in));
             break;
          % Only prints the data if requested by user
         elseif (verbose == 2)
@@ -288,13 +291,13 @@ while( total_bytes_received < total_bytes_to_receive )
 end
 
 % Check for DMA overflow
-%[~, ~, status_reg] = bpm_adc_ddc_read_soft_reg(DEVICE_BASEADDR + DEVICE_STATUS_REG);
+[~, ~, status_reg] = bpm_adc_ddc_read_soft_reg(DEVICE_BASEADDR + DEVICE_STATUS_REG);
 %disp(status_reg);
-dma_ovf = 0;%bitget(uint32(status_reg), DEVICE_DMA_OVF_BIT);
+dma_ovf = bitget(uint32(status_reg), DEVICE_DMA_OVF_BIT);
 
-%if (dma_ovf == 1)
-%    disp('DMA Overflow detected! Data might be corrupted');
-%end
+if (dma_ovf == 1)
+    disp('DMA Overflow detected! Data might be corrupted!');
+end
 
 % End gracefully
 skt.close;
