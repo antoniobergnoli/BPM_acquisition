@@ -2,25 +2,27 @@ function [msg_type, valid_bytes, reg_value] = bpm_adc_ddc_read_soft_reg(addr, ve
 %   [msg_type, valid_bytes, reg_value] =
 %       bpm_adc_ddc_read_soft_reg(addr, verbose, timeout)
 %
-%   Script de leitura dos registradores do servidor BPM
+%   Script for reading FPGA cores internal registers
 %
 %   ------------
 %   |   Input  |
 %   -----------------------------------------------------------------------
-%   addr       : Endereço do registrador de software requisitado.
-%   verbose    : Habilita modo com informações de debug.
-%                   -> '1' para poucas informações
-%                   -> '2' para informações adicionais
-%   timeout    : Tempo maximo à espera da conexão TCP com o servidor BPM
+%   addr       : Software register address.
+%   verbose    : Enables debug information.
+%                   -> '1' to few messages
+%                   -> '2' to additional messages
+%   timeout    : Maximum time (in miliseconds) to wait for a response from
+%                   the BPM server
 %   -----------------------------------------------------------------------
 %   ------------
 %   |  Output  |
 %   -----------------------------------------------------------------------
-%   msg_type    : Tipo da mensagem.
-%                   -> 1: Mensagem (string) em formato padrão ASCII
-%                   -> 2: Valor de registrador
-%   valid_bytes: Número de bytes válidos no pacote.
-%   value: Valor do registrador requisitado
+%   msg_type    : Message type .
+%                   -> 1: ASCII string
+%                   -> 2: Register value
+%   valid_bytes : Number of valid bytes in the last packet of the 
+%                   transaction. Usually ignored.
+%   value       : Requested register value
 %   -----------------------------------------------------------------------
 
 import java.net.Socket;

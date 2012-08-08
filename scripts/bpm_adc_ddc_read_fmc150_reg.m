@@ -2,31 +2,33 @@ function [msg_type, valid_bytes, reg_value] = bpm_adc_ddc_read_fmc150_reg(chipse
 %   [msg_type, valid_bytes, reg_value] =
 %       bpm_adc_ddc_read_fmc150_reg(chipselect, addr, verbose, timeout)
 %
-%   Script de leitura dos registradores do servidor BPM
+%   Script for reading FMC150 internal registers
 %
 %   ------------
 %   |   Input  |
 %   -----------------------------------------------------------------------
-%   chipselect : Seleção do componente da FMC150 desejado. 
-%                   -> 0x1 para CHIPSELECT_CDCE72010
-%                   -> 0x2 para CHIPSELECT_ADS62P49
-%                   -> 0x4 para CHIPSELECT_DAC3283
-%                   -> 0x8 para CHIPSELECT_AMC7823
-%   addr       : Endereço do registrador internamente ao chip selecionado.
-%                   Vide datasheet dos componentes.
-%   verbose    : Habilita modo com informações de debug.
-%                   -> '1' para poucas informações
-%                   -> '2' para informações adicionais
-%   timeout    : Tempo maximo à espera da conexão TCP com o servidor BPM
+%   chipselect : FMC150 component selection. 
+%                   -> 0x1 for CHIPSELECT_CDCE72010
+%                   -> 0x2 for CHIPSELECT_ADS62P49
+%                   -> 0x4 for CHIPSELECT_DAC3283
+%                   -> 0x8 for CHIPSELECT_AMC7823
+%   addr       : Address of the internal chip register selected.
+%                   See components datasheet for more information.
+%   verbose    : Enables debug information.
+%                   -> '1' to few messages
+%                   -> '2' to additional messages
+%   timeout    : Maximum time (in miliseconds) to wait for a response from
+%                   the BPM server
 %   -----------------------------------------------------------------------
 %   ------------
 %   |  Output  |
 %   -----------------------------------------------------------------------
-%   msg_type    : Tipo da mensagem.
-%                   -> 1: Mensagem (string) em formato padrão ASCII
-%                   -> 2: Valor de registrador
-%   valid_bytes: Número de bytes válidos no pacote.
-%   value: Valor do registrador requisitado
+%   msg_type    : Message type .
+%                   -> 1: ASCII string
+%                   -> 2: Register value
+%   valid_bytes : Number of valid bytes in the last packet of the 
+%                   transaction. Usually ignored.
+%   value       : Requested register value
 %   -----------------------------------------------------------------------
 
 import java.net.Socket;

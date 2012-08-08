@@ -2,39 +2,38 @@ function [adc_a, adc_b, sum, pos_x, pos_y, pos_z] = bpm_adc_ddc_plot_data(nr_sam
 %   [adc_a, adc_b, sum, pos_x, pos_y, pos_z] =
 %       bpm_adc_ddc_plot_data(nr_samples, fadc, which, nr_iterations, verbose)
 %
-%   Script de plotagem de dados do BPM
+%   Plot script for BPM data
 %
 %   ------------
 %   |   Input  |
 %   -----------------------------------------------------------------------
-%   nr_samples : Número de amostras a serem adquiridas. Limitada de acordo 
-%                   com o parâmetro 'which'.
-%                   -> 2097152 amostras para dados advindos do ADC
-%                       (which = 1)
-%                   -> 524288 amostras para dados advindos do processamento
-%                       de posição (which = 2)
-%   fadc       : Frequência de amostragem (em MHz) do ADC. Usado apenas para
-%                   plotagem adequada.
-%   which      : Seleção do tipo de dado.
-%                   -> '1' para dados advindos do ADC (Raw ADC Data)
-%                   -> '2' para dados advindos do processamento de posição
+%   nr_samples : Number of samples to be acquired. Bounded to parameter 
+%                   'which'
+%                   -> 2097152 samples to data from ADC (which = 1)
+%                   -> 524288 samples to data data from Position 
+%                       Calculation (which = 2)
+%   fadc       : ADC Sampling frequency (MHz). Only used for accurate axis 
+%                   information
+%   which      : Data type selection.
+%                   -> '1' to data from ADC (Raw ADC Data)
+%                   -> '2' to data from Postition Calculation processing
 %                       (DDC + Delta Over Sigma)
-%   nr_iterations : Número de plotagens consecutivas.
-%                   -> < 0 para plotagem contínua
-%                   -> > 0 para número específico de plotagens
-%   verbose    : Habilita modo com informações de debug.
-%                   -> '1' para poucas informações
-%                   -> '2' para informações adicionais
+%   nr_iterations : Number of consecutive plots
+%                   -> < 0 for continuous plot
+%                   -> > 0 for a specific numver of plots
+%   verbose    : Enables debug information.
+%                   -> '1' to few messages
+%                   -> '2' to additional messages
 %   -----------------------------------------------------------------------
 %   ------------
 %   |  Output  |
 %   -----------------------------------------------------------------------
-%   adc_a       : Dados referentes ao canal A do ADC
-%   adc_b       : Dados referentes ao canal B do ADC
-%   sum         : Soma dos quatro canais de medidas de posição.
-%   pos_x       : Medida de posição no eixo x
-%   pos_y       : Medida de posição no eixo y
-%   pos_z       : Medida de posição no eixo z
+%   adc_a       : Channel A RAW ADC Data.
+%   adc_b       : Channel B RAW ADC Data.
+%   sum         : Sum of the four ADC channels.
+%   pos_x       : X axis position measurement
+%   pos_y       : Y axis position measurement
+%   pos_z       : Z axis position measurement
 %   -----------------------------------------------------------------------    
 
 n_bits = 14;

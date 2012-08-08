@@ -2,25 +2,27 @@ function [msg_type, valid_bytes, msg_out] = bpm_adc_ddc_write_soft_reg(addr, val
 %   [msg_type, valid_bytes, msg_out] =
 %       bpm_adc_ddc_write_soft_reg(addr, value, verbose, timeout)
 %
-%   Script de escrita dos registradores do servidor BPM
+%   Script for writing FPGA cores internal registers
 %
 %   ------------
 %   |   Input  |
 %   -----------------------------------------------------------------------
-%   addr       : Endereço do registrador de software requisitado.
-%   value      : Valor a ser escrito no registrador selecionado.
-%   verbose    : Habilita modo com informações de debug.
-%                   -> '1' para poucas informações
-%                   -> '2' para informações adicionais
-%   timeout    : Tempo maximo à espera da conexão TCP com o servidor BPM.
+%   addr       : Software register address.
+%   value      : Value to be written in the selected register.
+%   verbose    : Enables debug information.
+%                   -> '1' to few messages
+%                   -> '2' to additional messages
+%   timeout    : Maximum time (in miliseconds) to wait for a response from
+%                   the BPM server
 %   -----------------------------------------------------------------------
 %   ------------
 %   |  Output  |
 %   -----------------------------------------------------------------------
-%   msg_type    : Tipo da mensagem.
-%                   -> 1: Mensagem (string) em formato padrão ASCII
-%   valid_bytes : Número de bytes válidos no pacote.
-%   msg_out     : Mensagem de status da escrita no registrador.
+%   msg_type    : Message type .
+%                   -> 1: ASCII string
+%   valid_bytes : Number of valid bytes in the last packet of the 
+%                   transaction. Usually ignored.
+%   msg_out     : Status confirmation message.
 %   -----------------------------------------------------------------------
 
 import java.net.Socket;

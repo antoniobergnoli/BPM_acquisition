@@ -2,49 +2,49 @@ function [msg_type, valid_bytes, dma_ovf, adc_a, adc_b, sum, pos_x, pos_y, pos_z
 %   [msg_type, valid_bytes, adc_a, adc_b, sum, pos_x, pos_y, pos_z] =
 %       bpm_adc_ddc_acquire_data(nr_samples, which, verbose, timeout)
 %
-%   Script de comunicação com servidor BPM para aquisição de dados
+%   Communication script with BPM server for data acquisition
 %
 %   ------------
 %   |   Input  |
 %   -----------------------------------------------------------------------
-%   nr_samples : Número de amostras a serem adquiridas. Limitada de acordo 
-%                   com o parâmetro 'which'.
-%                   -> 2097152 amostras para dados advindos do ADC
-%                       (which = 1)
-%                   -> 524288 amostras para dados advindos do processamento
-%                       de posição (which = 2)
-%   which      : Seleção do tipo de dado.
-%                   -> '1' para dados advindos do ADC (Raw ADC Data)
-%                   -> '2' para dados advindos do processamento de posição
+%   nr_samples : Number of samples to be acquired. Bounded to parameter 
+%                   'which'
+%                   -> 2097152 samples to data from ADC (which = 1)
+%                   -> 524288 samples to data data from Position 
+%                       Calculation (which = 2)
+%   which      : Data type selection.
+%                   -> '1' to data from ADC (Raw ADC Data)
+%                   -> '2' to data from Postition Calculation processing
 %                       (DDC + Delta Over Sigma)
-%   verbose    : Habilita modo com informações de debug.
-%                   -> '1' para poucas informações
-%                   -> '2' para informações adicionais
-%   timeout    : Tempo maximo à espera da conexão TCP com o servidor BPM
+%   verbose    : Enables debug information.
+%                   -> '1' to few messages
+%                   -> '2' to additional messages
+%   timeout    : Maximum time (in miliseconds) to wait for a response from
+%                   the BPM server
 %   -----------------------------------------------------------------------
 %   ------------
 %   |  Output  |
 %   -----------------------------------------------------------------------
-%   msg_type    : Tipo da mensagem contida no pacote de retorno.
-%                   Normalmente ignorado.
-%                   -> 1: Mensagem (string) em formato padrão ASCII
-%                   -> 2: Valor de registrador
-%                   -> 3: Novos dados advindos do ADC. Nova Transação
-%                   -> 4: Dados do ADC pertencentes à uma transação anterior
-%                   -> 5: Novos dados advindos do processamento de posição
-%                   -> 6: Dados do processamento de posição
-%                           pertencentes à uma transação anterior
-%   valid_bytes : Número de bytes válidos no último pacote da transação.
-%                   Normalmente ignorado.
-%   dma_ovf     : Indica se houve overflow na operação de aquisição.
-%                   -> 0: Overflow não detectado
-%                   -> 1: Overflow detectado
-%   adc_a       : Dados referentes ao canal A do ADC
-%   adc_b       : Dados referentes ao canal B do ADC
-%   sum         : Soma dos quatro canais de medidas de posição.
-%   pos_x       : Medida de posição no eixo x
-%   pos_y       : Medida de posição no eixo y
-%   pos_z       : Medida de posição no eixo z
+%   msg_type    : Message type within the response package.
+%                   Usually ignored.
+%                   -> 1: ASCII string
+%                   -> 2: Register value
+%                   -> 3: New data from ADC. New transaction
+%                   -> 4: ADC data belonging to a previous transaction
+%                   -> 5: New data from Position Calculation processing
+%                   -> 6: Position Calculation data belonging to a previous
+%                           transaction
+%   valid_bytes : Number of valid bytes in the last packet of the 
+%                   transaction. Usually ignored.
+%   dma_ovf     : Indicator of DMA overflow.
+%                   -> 0: Overflow not detected
+%                   -> 1: Overflow detected
+%   adc_a       : Channel A RAW ADC Data.
+%   adc_b       : Channel B RAW ADC Data.
+%   sum         : Sum of the four ADC channels.
+%   pos_x       : X axis position measurement
+%   pos_y       : Y axis position measurement
+%   pos_z       : Z axis position measurement
 %   -----------------------------------------------------------------------
 
 import java.net.Socket;
