@@ -1,7 +1,13 @@
 ## Firmware support for FMC150 Mezzanine (ADC + DAC) 
  
- 
- 
+Relevant Datasheet:
+
+
+[ADC] (https://www.ti.com/lit/ds/symlink/ads62p49.pdf)
+
+[DAC] (https://www.ti.com/product/DAC3283)
+
+
  
  Simple Acquisition System for ADC and Position Calculation Samples
 
