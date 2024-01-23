@@ -7,7 +7,7 @@ Relevant Datasheet:
 
 [DAC] (https://www.ti.com/product/DAC3283)
 
-
+[PLL] (https://www.ti.com/lit/ds/symlink/cdce72010.pdf)
  
  Simple Acquisition System for ADC and Position Calculation Samples
 
