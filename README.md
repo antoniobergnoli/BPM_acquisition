@@ -3,11 +3,11 @@
 Relevant Datasheet:
 
 
-[ADC] (https://www.ti.com/lit/ds/symlink/ads62p49.pdf)
+[ADC](https://www.ti.com/lit/ds/symlink/ads62p49.pdf)
 
-[DAC] (https://www.ti.com/product/DAC3283)
+[DAC](https://www.ti.com/product/DAC3283)
 
-[PLL] (https://www.ti.com/lit/ds/symlink/cdce72010.pdf)
+[PLL](https://www.ti.com/lit/ds/symlink/cdce72010.pdf)
  
  Simple Acquisition System for ADC and Position Calculation Samples
 
